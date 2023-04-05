@@ -1,5 +1,16 @@
 version: '3'
 services:
+
+  api-gateway:
+    image: nginx
+    container_name: api-gateway
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - alphanetwork
+    
   book-services:
     build:
       context: ./book-services/
