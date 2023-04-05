@@ -2,6 +2,7 @@ package book
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/rulanugrh/alpha/book/entities/domain"
@@ -42,4 +43,96 @@ func (bk *bookcontroller) UploadBook(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, success)
 }
 
-func (bk *bookcontroller)
+func (bk *bookcontroller) UpdateBook(ctx *gin.Context) {
+	book := domain.Book{}
+	getId := ctx.Param("id")
+	id, _ := strconv.Atoi(getId)
+
+	ctx.Bind(&book)
+	response, err := bk.bookcontroll.UpdateBook(uint(id), book)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, web.BookFailure{
+			Code:   500,
+			Status: "cant update book",
+		})
+	}
+
+	ctx.JSON(http.StatusOK, web.BookSuccess{
+		Code:   200,
+		Status: "success update book",
+		Data:   response,
+	})
+}
+
+func (bk *bookcontroller) DeleteBook(ctx *gin.Context) {
+	getId := ctx.Param("id")
+	ID, _ := strconv.Atoi(getId)
+
+	err := bk.bookcontroll.DeleteBook(uint(ID))
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, web.BookFailure{
+			Code:   500,
+			Status: "cant delete book",
+		})
+	}
+
+	ctx.JSON(http.StatusOK, web.BookSuccess{
+		Code:   200,
+		Status: "success delete book",
+		Data:   nil,
+	})
+}
+
+func (bk *bookcontroller) FindID(ctx *gin.Context) {
+	getID := ctx.Param("id")
+	id, _ := strconv.Atoi(getID)
+
+	response, err := bk.bookcontroll.FindId(uint(id))
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, web.BookFailure{
+			Code:   500,
+			Status: "cant find book",
+		})
+	}
+
+	ctx.JSON(http.StatusOK, web.BookSuccess{
+		Code:   200,
+		Status: "success find book",
+		Data:   response,
+	})
+}
+
+func (bk *bookcontroller) FindAll(ctx *gin.Context) {
+	response, err := bk.bookcontroll.FindAll()
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, web.BookFailure{
+			Code:   500,
+			Status: "cant find all book",
+		})
+	}
+
+	ctx.JSON(http.StatusOK, web.BookSuccess{
+		Code:   200,
+		Status: "sucess find all",
+		Data:   response,
+	})
+}
+
+func (bk *bookcontroller) Seller(ctx *gin.Context) {
+	seller := domain.Seller{}
+	ctx.Bind(&seller)
+
+	response, err := bk.bookcontroll.Seller(seller)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, web.BookFailure{
+			Code:   500,
+			Status: "cant create seller",
+		})
+	}
+
+	ctx.JSON(http.StatusOK, web.BookSuccess{
+		Code:   200,
+		Status: "success create user",
+		Data:   response,
+	})
+}

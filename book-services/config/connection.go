@@ -33,7 +33,7 @@ var DB *gorm.DB
 
 func GetConnection() *gorm.DB {
 	conf := GetConfig()
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)%s?parseTime=true&charset=utf8mb4",
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&charset=utf8mb4",
 		conf.Database.User,
 		conf.Database.Pass,
 		conf.Database.Host,
