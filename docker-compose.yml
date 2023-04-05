@@ -1,0 +1,30 @@
+version: '3'
+services:
+  book-services:
+    build:
+      context: ./book-services/
+      dockerfile: ./book-services/Dockerfile
+    environment:
+      - APP_HOST=${APP_HOST}
+      - APP_PORT=${APP_PORT}
+    ports:
+      - 3000:3000
+    depends_on:
+      - db-book
+    networks:
+      - alphanetwork
+  
+  db-book:
+    container_name: db-book
+    image: mysql
+    environment:
+      - MYSQL_NAME=${MYSQL_NAME}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASS=${MYSQL_PASS}
+    ports:
+      - 3306:3306
+    networks:
+      - alphanetwork
+
+networks:
+  alphanetwork:
