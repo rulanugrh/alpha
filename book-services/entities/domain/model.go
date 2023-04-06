@@ -9,8 +9,10 @@ type Book struct {
 	Stock      int      `json:"stock_quantity" form:"stock_quantity" validate:"requiered"`
 	Author     string   `json:"author_name" form:"author_name" validate:"required"`
 	Examplar   int      `json:"examplar" form:"examplar" validate:"required"`
-	SellerID   Seller   `json:"seller" gorm:"foreignKey:SellerID;references:ID"`
-	CategoryID Category `json:"category" gorm:"foreignKey:CategoryID;references:ID"`
+	SellerID   uint     `json:"seller_id" form:"seller_id"`
+	CategoryID uint     `json:"category_id" form:"category_id"`
+	Seller     Seller   `json:"seller" gorm:"foreignKey:SellerID;references:ID"`
+	Category   Category `json:"category" gorm:"foreignKey:CategoryID;references:ID"`
 }
 
 type Seller struct {

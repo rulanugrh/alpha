@@ -30,6 +30,7 @@ func (cate *categorycontroller) CreateCategory(ctx *gin.Context) {
 			Code:   500,
 			Status: "CANT CREATE CATEGORY",
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, web.CategorySuccess{
@@ -49,6 +50,7 @@ func (cate *categorycontroller) DeleteCategory(ctx *gin.Context) {
 			Code:   500,
 			Status: "CANT DELETE CATEGORY",
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, web.CategorySuccess{

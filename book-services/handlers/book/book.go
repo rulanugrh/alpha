@@ -32,6 +32,7 @@ func (bk *bookcontroller) UploadBook(ctx *gin.Context) {
 		}
 
 		ctx.JSON(http.StatusBadRequest, failure)
+		return
 	}
 
 	success := web.BookSuccess{
@@ -55,6 +56,7 @@ func (bk *bookcontroller) UpdateBook(ctx *gin.Context) {
 			Code:   500,
 			Status: "cant update book",
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, web.BookSuccess{
@@ -74,6 +76,7 @@ func (bk *bookcontroller) DeleteBook(ctx *gin.Context) {
 			Code:   500,
 			Status: "cant delete book",
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, web.BookSuccess{
@@ -93,6 +96,7 @@ func (bk *bookcontroller) FindID(ctx *gin.Context) {
 			Code:   500,
 			Status: "cant find book",
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, web.BookSuccess{
@@ -109,6 +113,7 @@ func (bk *bookcontroller) FindAll(ctx *gin.Context) {
 			Code:   500,
 			Status: "cant find all book",
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, web.BookSuccess{
@@ -128,6 +133,7 @@ func (bk *bookcontroller) Seller(ctx *gin.Context) {
 			Code:   500,
 			Status: "cant create seller",
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, web.BookSuccess{
