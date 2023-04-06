@@ -1,0 +1,26 @@
+POST http://localhost:3000/api/seller
+Content-Type: "application/json"
+{
+    "name": "Arul"
+}
+
+###
+POST http://localhost/api/categories
+Content-Type: "application/json"
+{
+    "name": "Mystic",
+    "desc": "genre yang bertemakan misterius dan mistis"
+}
+
+###
+POST http://localhost/api/book
+Content-Type: "application/json"
+{
+    "name": "Mitologi Of Nordik",
+    "price": 200000,
+    "stock_quantity": 10,
+    "author_name": "Pradana",
+    "examplar": 10,
+    "seller": 2,
+    "category": 2
+}
