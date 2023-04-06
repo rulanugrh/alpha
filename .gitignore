@@ -2,3 +2,6 @@ book-services/.env
 order-services/.env
 user-services/.env
 .env
+
+user-services/node_modules/*
+user-services/node_modules/
