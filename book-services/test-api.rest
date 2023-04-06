@@ -5,7 +5,7 @@ Content-Type: "application/json"
 }
 
 ###
-POST http://localhost/api/categories
+POST http://localhost:3000/api/categories
 Content-Type: "application/json"
 {
     "name": "Mystic",
@@ -13,7 +13,7 @@ Content-Type: "application/json"
 }
 
 ###
-POST http://localhost/api/book
+POST http://localhost:3000/api/book
 Content-Type: "application/json"
 {
     "name": "Mitologi Of Nordik",
