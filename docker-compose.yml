@@ -16,8 +16,8 @@ services:
       context: ./book-services/
       dockerfile: ./book-services/Dockerfile
     environment:
-      - APP_HOST=${APP_HOST}
-      - APP_PORT=${APP_PORT}
+      - APP_HOST=${APP_BOOK_HOST}
+      - APP_PORT=${APP_BOOK_PORT}
     ports:
       - 3000:3000
     depends_on:
@@ -29,9 +29,9 @@ services:
     container_name: db-book
     image: mysql
     environment:
-      - MYSQL_NAME=${MYSQL_NAME}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASS=${MYSQL_PASS}
+      - MYSQL_NAME=${MYSQL_BOOK_NAME}
+      - MYSQL_USER=${MYSQL_BOOK_USER}
+      - MYSQL_PASS=${MYSQL_BOOK_PASS}
     ports:
       - 3306:3306
     networks:
