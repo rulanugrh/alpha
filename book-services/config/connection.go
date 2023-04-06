@@ -25,6 +25,8 @@ type App struct {
 	RabbitMQ  struct {
 		Host string
 		Port string
+		User string
+		Pass string
 	}
 }
 
@@ -71,6 +73,8 @@ func initConfig() *App {
 		conf.RunnApp.Port = "3000"
 		conf.RabbitMQ.Host = ""
 		conf.RabbitMQ.Port = ""
+		conf.RabbitMQ.User = "guest"
+		conf.RabbitMQ.Pass = "guest"
 
 		return &conf
 	}
@@ -85,6 +89,8 @@ func initConfig() *App {
 	conf.RabbitMQ.Port = os.Getenv("RABBIT_PORT")
 	conf.RunnApp.Host = os.Getenv("APP_HOST")
 	conf.RunnApp.Port = os.Getenv("APP_PORT")
+	conf.RabbitMQ.User = os.Getenv("RABBITMQ_USER")
+	conf.RabbitMQ.Pass = os.Getenv("RABBITMQ_PASS")
 
 	return &conf
 

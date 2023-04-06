@@ -36,6 +36,15 @@ services:
       - 3306:3306
     networks:
       - alphanetwork
+  
+  msgbroker:
+    container_name: msgbroker
+    image: rabbitmq:3.9.11-management-alpine
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - alphanetwork
 
 networks:
   alphanetwork:
