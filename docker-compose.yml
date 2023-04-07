@@ -21,22 +21,37 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - db-book
+      - db-services
     networks:
       - alphanetwork
   
-  db-book:
+  user-services:
+    build:
+      context: ./user-services/
+      dockerfile: ./user-services/Dockerfile
+    environment:
+      - APP_HOST=${APP_USER_HOST}
+      - APP_PORT=${APP_USER_PORT}
+    ports:
+      - 5000:5000
+    depends_on:
+      - db-services
+    networks:
+      - alphanetwork
+  
+  db-services:
     container_name: db-book
     image: mysql
     environment:
-      - MYSQL_NAME=${MYSQL_BOOK_NAME}
-      - MYSQL_USER=${MYSQL_BOOK_USER}
-      - MYSQL_PASS=${MYSQL_BOOK_PASS}
+      - MYSQL_DATABASE=${MYSQL_BOOK_NAME}
+      - MYSQL_DATABASE=${MYSQL_USER_NAME}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASS=${MYSQL_PASS}
     ports:
       - 3306:3306
     networks:
       - alphanetwork
-  
+
   msgbroker:
     container_name: msgbroker
     image: rabbitmq:3.9.11-management-alpine
