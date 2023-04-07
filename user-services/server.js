@@ -1,7 +1,7 @@
-const express = require('express')
-const cors = require('cors')
-const env = require('./helpers/env')
-const userRoute = require('./routes/userRoute')
+import express from 'express'
+import cors from "cors"
+import env from "./helpers/env.js"
+import userRoute from './routes/userRoute.js'
 
 const app = express()
 app.use(cors());

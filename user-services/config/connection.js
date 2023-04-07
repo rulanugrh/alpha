@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const env = require('../helpers/env');
+import { Sequelize } from 'sequelize';
+import env from '../helpers/env.js';
 
 const db = new Sequelize(`${env.sequelize.name}`, `${env.sequelize.user}`, `${env.sequelize.pass}`, {
     host: `${env.sequelize.host}`,

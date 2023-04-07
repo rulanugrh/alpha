@@ -1,7 +1,7 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv'
 dotenv.config();
 
-const dotenv = {
+const env = {
     sequelize: {
         host: process.env.MYSQL_HOST,
         port: process.env.MYSQL_PORT,
@@ -18,4 +18,4 @@ const dotenv = {
     jwtsecret: process.env.JWT_SECRET
 }
 
-module.exports = dotenv;
+export default env;
