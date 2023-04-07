@@ -2,12 +2,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const dotenv = {
-    mongodb: {
-        host: process.env.MONGODB_HOST,
-        port: process.env.MONGODB_PORT,
-        name: process.env.MONGODB_NAME,
-        user: process.env.MONGODB_USER,
-        pass: process.env.MONGODB_PASS
+    sequelize: {
+        host: process.env.MYSQL_HOST,
+        port: process.env.MYSQL_PORT,
+        name: process.env.MYSQL_NAME,
+        user: process.env.MYSQL_USER,
+        pass: process.env.MYSQL_PASS
     },
 
     app: {

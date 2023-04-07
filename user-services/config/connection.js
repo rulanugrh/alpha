@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
 const env = require('../helpers/env');
-const conn = mongoose.connection;
 
-const dbConn = mongoose.connect(`mongodb://${env.mongodb.host}:${env.mongodb.port}/${env.mongodb.name}`, {
-    user: env.mongodb.user,
-    pass: env.mongodb.pass,
-    autoIndex: true,
-}).then(() => {
-    console.log(`mongodb running`)
-}).catch((err) => {
-    console.log(`something error on ${err.message}`)
+const db = new Sequelize(`${env.sequelize.name}`, `${env.sequelize.user}`, `${env.sequelize.pass}`, {
+    host: `${env.sequelize.host}`,
+    dialect: "mysql"
+})
+
+const dbConn = db.authenticate().then(() => {
+    return true
+}).catch(err => {
+    console.log(new Error(`cant connect db because ${err}`))
+    return false
 });
 
-
-module.exports = dbConn;
+export default db;
