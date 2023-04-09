@@ -13,7 +13,7 @@ type Order struct {
 	OrderAt time.Time `json:"order_at" form:"order_at"`
 }
 
-type OrderTime struct {
+type OrderItem struct {
 	gorm.Model
 	OrderID  uint  `json:"order_id" form:"order_id"`
 	BookID   uint  `json:"book_id" form:"book_id"`
