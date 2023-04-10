@@ -18,12 +18,12 @@ type Book struct {
 type Seller struct {
 	gorm.Model
 	Name  string `json:"name" form:"name" validate:"required"`
-	Books []Book `json:"books" gorm:"foreignKey:SellerID;references:ID"`
+	Books []Book `json:"books" form:"books"`
 }
 
 type Category struct {
 	gorm.Model
 	Name        string `json:"name" form:"name" validate:"required"`
 	Description string `json:"description" name:"description"`
-	Books       []Book `json:"books" gorm:"foreignKey:CategoryID;references:ID"`
+	Books       []Book `json:"books" form:"books"`
 }
