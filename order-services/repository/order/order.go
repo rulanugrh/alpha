@@ -32,9 +32,9 @@ func (or *orderrepo) FindID(id uint) (domain.Order, error) {
 	return order, nil
 }
 
-func (or *orderrepo) FindAll() ([]domain.Order, error) {
+func (or *orderrepo) FindAll(id uint) ([]domain.Order, error) {
 	var order []domain.Order
-	err := config.DB.Preload("User").Find(&order).Error
+	err := config.DB.Preload("User").Where("user_id = ?", id).Find(&order).Error
 	if err != nil {
 		return []domain.Order{}, errors.New("cant find all order")
 	}

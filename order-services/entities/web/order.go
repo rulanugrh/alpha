@@ -12,7 +12,13 @@ type OrderFailure struct {
 }
 
 type OrderResponse struct {
-	OrderID  int `json:"order_id" form:"order_id"`
-	Price    int `json:"price" form:"price"`
-	Subtotal int `json:"subtotal" form:"subtotal"`
+	OrderID  int  `json:"order_id" form:"order_id"`
+	Subtotal int  `json:"subtotal" form:"subtotal"`
+	Paid     bool `json:"paid" form:"paid"`
+}
+
+type OrderItemResponse struct {
+	Quantity int  `json:"quantity" form:"quantity"`
+	BookID   uint `json:"book_id" form:"book_id"`
+	Subtotal int  `json:"subtotal" form:"subtotal"`
 }
