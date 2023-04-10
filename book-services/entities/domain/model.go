@@ -11,8 +11,8 @@ type Book struct {
 	Examplar   int      `json:"examplar" form:"examplar" validate:"required"`
 	SellerID   uint     `json:"seller_id" form:"seller_id"`
 	CategoryID uint     `json:"category_id" form:"category_id"`
-	Seller     Seller   `json:"seller" gorm:"foreignKey:SellerID;references:ID"`
-	Category   Category `json:"category" gorm:"foreignKey:CategoryID;references:ID"`
+	Seller     Seller   `json:"seller" from:"seller"`
+	Category   Category `json:"category" from:"seller"`
 }
 
 type Seller struct {

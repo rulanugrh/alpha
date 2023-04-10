@@ -23,6 +23,8 @@ type OrderItem struct {
 	Price    int   `json:"price" form:"price"`
 	Subtotal int   `json:"subtotal" form:"subtotal"`
 	Orders   Order `json:"order" form:"order"`
+	UserID   uint  `json:"user_id" form:"user_id"`
+	User     User  `json:"user" form:"user"`
 	Books    Book  `json:"book" form:"book"`
 }
 

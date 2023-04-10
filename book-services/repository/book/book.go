@@ -34,7 +34,7 @@ func (bk *bookrepository) Update(id uint, book domain.Book) (domain.Book, error)
 
 func (bk *bookrepository) FindAll() ([]domain.Book, error) {
 	var book []domain.Book
-	err := config.DB.Find(&book)
+	err := config.DB.Preload("Seller").Preload("Category").Find(&book)
 	if err != nil {
 		return book, errors.New("cant find all book")
 	}
@@ -44,7 +44,7 @@ func (bk *bookrepository) FindAll() ([]domain.Book, error) {
 
 func (bk *bookrepository) FindId(id uint) (domain.Book, error) {
 	var book domain.Book
-	err := config.DB.First(&book, id)
+	err := config.DB.Preload("Seller").Preload("Category").First(&book, id)
 	if err != nil {
 		return book, errors.New("cant find book")
 	}

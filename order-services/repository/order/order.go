@@ -64,7 +64,7 @@ func (or *orderrepo) Checkout(id uint, order domain.Order) (domain.Order, error)
 func (or *orderrepo) ListCart(id uint) ([]domain.OrderItem, error) {
 	var orderItem []domain.OrderItem
 
-	err := config.DB.Preload("Book").Where("user_id = ?", id).Find(&orderItem).Error
+	err := config.DB.Preload("Book").Preload("Order").Preload("User").Where("user_id = ?", id).Find(&orderItem).Error
 	if err != nil {
 		return []domain.OrderItem{}, errors.New("cant find all cart")
 	}
