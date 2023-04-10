@@ -6,5 +6,8 @@ type OrderRepository interface {
 	Create(order domain.Order) (domain.Order, error)
 	FindID(id uint) (domain.Order, error)
 	FindAll() ([]domain.Order, error)
-	//	PayOrder(id uint, orderItem domain.OrderItem) (domain.OrderItem, error)
+	AddCart(orderItem domain.OrderItem) (domain.OrderItem, error)
+	Checkout(id uint, order domain.Order) (domain.Order, error)
+	ListCart(userId uint) ([]domain.OrderItem, error)
+	DeleteCart(id uint) error
 }

@@ -24,7 +24,7 @@ func (or *orderrepo) Create(order domain.Order) (domain.Order, error) {
 
 func (or *orderrepo) FindID(id uint) (domain.Order, error) {
 	var order domain.Order
-	err := config.DB.First(&order, id).Error
+	err := config.DB.Preload("User").First(&order, id).Error
 	if err != nil {
 		return domain.Order{}, errors.New("cant find order by this id")
 	}
@@ -34,10 +34,50 @@ func (or *orderrepo) FindID(id uint) (domain.Order, error) {
 
 func (or *orderrepo) FindAll() ([]domain.Order, error) {
 	var order []domain.Order
-	err := config.DB.Find(&order).Error
+	err := config.DB.Preload("User").Find(&order).Error
 	if err != nil {
 		return []domain.Order{}, errors.New("cant find all order")
 	}
 
 	return order, nil
+}
+
+func (or *orderrepo) AddCart(order domain.OrderItem) (domain.OrderItem, error) {
+	err := config.DB.Create(&order).Error
+	if err != nil {
+		return domain.OrderItem{}, errors.New("cant add cart")
+	}
+
+	return order, nil
+}
+
+func (or *orderrepo) Checkout(id uint, order domain.Order) (domain.Order, error) {
+	var orderUpdates domain.Order
+	err := config.DB.Model(&order).Where("id = ?", id).Updates(&orderUpdates).Error
+	if err != nil {
+		return domain.Order{}, errors.New("cant checkout")
+	}
+
+	return orderUpdates, nil
+}
+
+func (or *orderrepo) ListCart(id uint) ([]domain.OrderItem, error) {
+	var orderItem []domain.OrderItem
+
+	err := config.DB.Preload("Book").Where("user_id = ?", id).Find(&orderItem).Error
+	if err != nil {
+		return []domain.OrderItem{}, errors.New("cant find all cart")
+	}
+
+	return orderItem, nil
+}
+
+func (or *orderrepo) DeleteCart(id uint) error {
+	var orderItem domain.OrderItem
+	err := config.DB.Where("id = ?", id).Delete(&orderItem).Error
+	if err != nil {
+		return errors.New("cant delete cart")
+	}
+
+	return nil
 }
