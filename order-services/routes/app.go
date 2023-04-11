@@ -7,6 +7,7 @@ import (
 	"github.com/rulanugrh/alpha/order/handlers/book"
 	"github.com/rulanugrh/alpha/order/handlers/order"
 	"github.com/rulanugrh/alpha/order/handlers/user"
+	"github.com/rulanugrh/alpha/order/helpers"
 )
 
 func Run(book book.BookController, user user.UserController, order order.OrderController) {
@@ -40,4 +41,25 @@ func Run(book book.BookController, user user.UserController, order order.OrderCo
 
 	confApp := config.GetConfig()
 	serv.Start(confApp.RunnApp.Host + ":" + confApp.RunnApp.Port)
+
+	// Section RabbitMQ
+	errUC := helpers.UserCreated()
+	if errUC != nil {
+		helpers.FailError(errUC, "something error in this receive")
+	}
+
+	errUD := helpers.UserDeleted()
+	if errUD != nil {
+		helpers.FailError(errUD, "something error in this receive")
+	}
+
+	errBC := helpers.BookCreated()
+	if errBC != nil {
+		helpers.FailError(errBC, "something error in this receive")
+	}
+
+	errBD := helpers.BookDeleted()
+	if errBD != nil {
+		helpers.FailError(errBD, "something error in this receive")
+	}
 }
