@@ -64,7 +64,7 @@ func (or *orderrepo) Checkout(id uint, order domain.Order) (domain.Order, error)
 func (or *orderrepo) ListCart(id uint) ([]domain.OrderItem, error) {
 	var orderItem []domain.OrderItem
 
-	err := config.DB.Preload("Book").Preload("Order").Preload("User").Where("user_id = ?", id).Find(&orderItem).Error
+	err := config.DB.Preload("Books").Preload("Orders").Preload("User").Where("user_id = ?", id).Find(&orderItem).Error
 	if err != nil {
 		return []domain.OrderItem{}, errors.New("cant find all cart")
 	}
@@ -84,7 +84,7 @@ func (or *orderrepo) DeleteCart(id uint) error {
 
 func (or *orderrepo) ListNotPaid(id uint) ([]domain.Order, error) {
 	var order []domain.Order
-	err := config.DB.Where("user_id = ?", id).Where("is_paid = ?", false).Find(&order).Error
+	err := config.DB.Preload("User").Where("user_id = ?", id).Where("paid = ?", false).Find(&order).Error
 	if err != nil {
 		return []domain.Order{}, errors.New("cant list all not paid")
 	}

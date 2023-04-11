@@ -21,4 +21,5 @@ func (usr userrepo) Create(user domain.User) (domain.User, error) {
 	}
 
 	return user, nil
+
 }

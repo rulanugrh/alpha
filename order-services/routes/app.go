@@ -30,12 +30,12 @@ func Run(book book.BookController, user user.UserController, order order.OrderCo
 	{
 		apiOrder.POST("/", order.CreateOrder)
 		apiOrder.GET("/:id", order.FindId)
-		apiOrder.GET("/:id", order.FindAll)
+		apiOrder.GET("/getAll/:id", order.FindAll)
 		apiOrder.POST("/cart", order.AddCart)
 		apiOrder.GET("/cart/:id", order.ListCart)
 		apiOrder.DELETE("/cart/:id", order.DeleteCart)
 		apiOrder.GET("/cart/:id/notpaid", order.ListNotPaid)
-		apiOrder.POST("/checkout", order.Checkout)
+		apiOrder.PUT("/checkout/:id", order.Checkout)
 	}
 
 	// confApp := config.GetConfig()

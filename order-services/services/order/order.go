@@ -25,7 +25,7 @@ func (or *orderservice) CreateOrder(order domain.Order) (web.OrderResponse, erro
 	}
 
 	return web.OrderResponse{
-		OrderID:  int(ors.ID),
+		OrderID:  ors.ID,
 		Subtotal: order.Total,
 		Paid:     ors.Paid,
 	}, nil
@@ -38,7 +38,7 @@ func (or *orderservice) FindId(id uint) (web.OrderResponse, error) {
 	}
 
 	return web.OrderResponse{
-		OrderID:  int(id),
+		OrderID:  id,
 		Subtotal: order.Total,
 		Paid:     order.Paid,
 	}, nil
@@ -73,7 +73,7 @@ func (or *orderservice) Checkout(id uint, order domain.Order) (web.OrderResponse
 	}
 
 	return web.OrderResponse{
-		OrderID:  int(ors.ID),
+		OrderID:  id,
 		Paid:     ors.Paid,
 		Subtotal: ors.Total,
 	}, nil

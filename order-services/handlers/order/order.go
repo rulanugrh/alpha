@@ -96,11 +96,11 @@ func (or *ordercontroller) AddCart(ctx echo.Context) error {
 }
 
 func (or *ordercontroller) Checkout(ctx echo.Context) error {
-	getId := ctx.Param("id")
-	id, _ := strconv.Atoi(getId)
-
 	var order domain.Order
 	ctx.Bind(&order)
+
+	getId := ctx.Param("id")
+	id, _ := strconv.Atoi(getId)
 
 	response, err := or.orders.Checkout(uint(id), order)
 	if err != nil {

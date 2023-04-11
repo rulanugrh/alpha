@@ -12,7 +12,7 @@ type OrderFailure struct {
 }
 
 type OrderResponse struct {
-	OrderID  int  `json:"order_id" form:"order_id"`
+	OrderID  uint `json:"order_id" form:"order_id"`
 	Subtotal int  `json:"subtotal" form:"subtotal"`
 	Paid     bool `json:"paid" form:"paid"`
 }
