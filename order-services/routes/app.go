@@ -10,7 +10,7 @@ import (
 )
 
 func Run(book book.BookController, user user.UserController, order order.OrderController) {
-	conf := config.GetConnect()
+	conf := config.GetConnection()
 	conf.AutoMigrate(&domain.Book{}, &domain.User{}, &domain.Order{}, &domain.OrderItem{})
 
 	serv := echo.New()
@@ -39,5 +39,5 @@ func Run(book book.BookController, user user.UserController, order order.OrderCo
 	}
 
 	confApp := config.GetConfig()
-	serv.Start(confApp.Host + ":" + confApp.Port)
+	serv.Start(confApp.RunnApp.Host + ":" + confApp.RunnApp.Port)
 }
