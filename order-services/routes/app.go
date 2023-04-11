@@ -35,9 +35,9 @@ func Run(book book.BookController, user user.UserController, order order.OrderCo
 		apiOrder.GET("/cart/:id", order.ListCart)
 		apiOrder.DELETE("/cart/:id", order.DeleteCart)
 		apiOrder.GET("/cart/:id/notpaid", order.ListNotPaid)
-		apiOrder.PUT("/checkout/:id", order.Checkout)
+		apiOrder.POST("/checkout/:id", order.Checkout)
 	}
 
-	// confApp := config.GetConfig()
-	serv.Start(":8000")
+	confApp := config.GetConfig()
+	serv.Start(confApp.Host + ":" + confApp.Port)
 }
