@@ -11,7 +11,7 @@ services:
     networks:
       - alphanetwork
     
-  book-services:
+  book:
     build:
       context: ./book-services/
       dockerfile: ./book-services/Dockerfile
@@ -25,7 +25,7 @@ services:
     networks:
       - alphanetwork
   
-  order-services:
+  order:
     build:
       context: ./order-services/
       dockerfile: ./order-services/Dockerfile
@@ -39,7 +39,7 @@ services:
     networks:
       - alphanetwork
   
-  user-services:
+  user:
     build:
       context: ./user-services/
       dockerfile: ./user-services/Dockerfile
