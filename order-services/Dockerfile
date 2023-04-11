@@ -9,6 +9,6 @@ COPY . .
 RUN go mod tidy
 RUN go build -o server
 
-EXPOSE 5000
+EXPOSE 8000
 
 CMD [ "./server" ]
