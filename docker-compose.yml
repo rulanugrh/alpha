@@ -25,6 +25,20 @@ services:
     networks:
       - alphanetwork
   
+  order-services:
+    build:
+      context: ./order-services/
+      dockerfile: ./order-services/Dockerfile
+    environment:
+      - APP_HOST=${APP_ORDER_HOST}
+      - APP_PORT=${APP_ORDER_PORT}
+    ports:
+      - 8000:8000
+    depends_on:
+      - db-services
+    networks:
+      - alphanetwork
+  
   user-services:
     build:
       context: ./user-services/
@@ -44,6 +58,7 @@ services:
     image: mysql
     environment:
       - MYSQL_DATABASE=${MYSQL_BOOK_NAME}
+      - MYSQL_DATABASE=${MYSQL_ORDER_NAME}
       - MYSQL_DATABASE=${MYSQL_USER_NAME}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASS=${MYSQL_PASS}
