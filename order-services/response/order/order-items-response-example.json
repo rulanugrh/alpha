@@ -1,0 +1,141 @@
+{
+    "code": 200,
+    "status": "data found",
+    "data": [
+        {
+            "ID": 1,
+            "CreatedAt": "2023-04-11T04:47:34.311Z",
+            "UpdatedAt": "2023-04-11T04:47:34.311Z",
+            "DeletedAt": null,
+            "quantity": 1,
+            "order_id": 2,
+            "book_id": 6,
+            "price": 85000,
+            "subtotal": 85000,
+            "user_id": 9,
+            "user": {
+                "ID": 9,
+                "CreatedAt": "2023-04-11T04:37:17.393Z",
+                "UpdatedAt": "2023-04-11T04:37:17.393Z",
+                "DeletedAt": null,
+                "name": "pradanaaa",
+                "email": "pradanaz@mail.com"
+            },
+            "books": {
+                "ID": 6,
+                "CreatedAt": "2023-04-11T04:41:29.109Z",
+                "UpdatedAt": "2023-04-11T04:41:29.109Z",
+                "DeletedAt": null,
+                "name": "Dikta dan Hukum",
+                "price": 85000
+            },
+            "orders": {
+                "ID": 2,
+                "CreatedAt": "2023-04-11T04:43:27.002Z",
+                "UpdatedAt": "2023-04-11T05:16:33.902Z",
+                "DeletedAt": null,
+                "is_paid": false,
+                "grand_total": 85000,
+                "user_id": 9,
+                "user": {
+                    "ID": 0,
+                    "CreatedAt": "0001-01-01T00:00:00Z",
+                    "UpdatedAt": "0001-01-01T00:00:00Z",
+                    "DeletedAt": null,
+                    "name": "",
+                    "email": ""
+                }
+            }
+        },
+        {
+            "ID": 2,
+            "CreatedAt": "2023-04-11T04:59:03.856Z",
+            "UpdatedAt": "2023-04-11T04:59:03.856Z",
+            "DeletedAt": null,
+            "quantity": 1,
+            "order_id": 3,
+            "book_id": 5,
+            "price": 65000,
+            "subtotal": 65000,
+            "user_id": 9,
+            "user": {
+                "ID": 9,
+                "CreatedAt": "2023-04-11T04:37:17.393Z",
+                "UpdatedAt": "2023-04-11T04:37:17.393Z",
+                "DeletedAt": null,
+                "name": "pradanaaa",
+                "email": "pradanaz@mail.com"
+            },
+            "books": {
+                "ID": 5,
+                "CreatedAt": "2023-04-11T04:40:45.405Z",
+                "UpdatedAt": "2023-04-11T04:40:45.405Z",
+                "DeletedAt": null,
+                "name": "Ilmu Jembatan Dunia",
+                "price": 65000
+            },
+            "orders": {
+                "ID": 3,
+                "CreatedAt": "2023-04-11T04:43:37.365Z",
+                "UpdatedAt": "2023-04-11T04:43:37.365Z",
+                "DeletedAt": null,
+                "is_paid": false,
+                "grand_total": 65000,
+                "user_id": 9,
+                "user": {
+                    "ID": 0,
+                    "CreatedAt": "0001-01-01T00:00:00Z",
+                    "UpdatedAt": "0001-01-01T00:00:00Z",
+                    "DeletedAt": null,
+                    "name": "",
+                    "email": ""
+                }
+            }
+        },
+        {
+            "ID": 3,
+            "CreatedAt": "2023-04-11T04:59:26.855Z",
+            "UpdatedAt": "2023-04-11T04:59:26.855Z",
+            "DeletedAt": null,
+            "quantity": 1,
+            "order_id": 4,
+            "book_id": 3,
+            "price": 50000,
+            "subtotal": 50000,
+            "user_id": 9,
+            "user": {
+                "ID": 9,
+                "CreatedAt": "2023-04-11T04:37:17.393Z",
+                "UpdatedAt": "2023-04-11T04:37:17.393Z",
+                "DeletedAt": null,
+                "name": "pradanaaa",
+                "email": "pradanaz@mail.com"
+            },
+            "books": {
+                "ID": 3,
+                "CreatedAt": "2023-04-11T04:39:53.135Z",
+                "UpdatedAt": "2023-04-11T04:39:53.135Z",
+                "DeletedAt": null,
+                "name": "Kisah Kasih Di Sekolah",
+                "price": 50000
+            },
+            "orders": {
+                "ID": 4,
+                "CreatedAt": "2023-04-11T04:43:52.247Z",
+                "UpdatedAt": "2023-04-11T04:43:52.247Z",
+                "DeletedAt": null,
+                "is_paid": false,
+                "grand_total": 50000,
+                "user_id": 9,
+                "user": {
+                    "ID": 0,
+                    "CreatedAt": "0001-01-01T00:00:00Z",
+                    "UpdatedAt": "0001-01-01T00:00:00Z",
+                    "DeletedAt": null,
+                    "name": "",
+                    "email": ""
+                }
+            }
+        }
+    ]
+}

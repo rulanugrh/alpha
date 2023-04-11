@@ -1,0 +1,7 @@
+{
+    "code": 201,
+    "status": "success create user",
+    "data": {
+        "name": "Johan Hammond"
+    }
+}

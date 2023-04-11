@@ -1,0 +1,74 @@
+{
+    "code": 200,
+    "status": "data found",
+    "data": [
+        {
+            "ID": 1,
+            "CreatedAt": "2023-04-11T04:42:46.95Z",
+            "UpdatedAt": "2023-04-11T04:42:46.95Z",
+            "DeletedAt": null,
+            "is_paid": false,
+            "grand_total": 0,
+            "user_id": 9,
+            "user": {
+                "ID": 9,
+                "CreatedAt": "2023-04-11T04:37:17.393Z",
+                "UpdatedAt": "2023-04-11T04:37:17.393Z",
+                "DeletedAt": null,
+                "name": "pradanaaa",
+                "email": "pradanaz@mail.com"
+            }
+        },
+        {
+            "ID": 2,
+            "CreatedAt": "2023-04-11T04:43:27.002Z",
+            "UpdatedAt": "2023-04-11T05:16:33.902Z",
+            "DeletedAt": null,
+            "is_paid": false,
+            "grand_total": 85000,
+            "user_id": 9,
+            "user": {
+                "ID": 9,
+                "CreatedAt": "2023-04-11T04:37:17.393Z",
+                "UpdatedAt": "2023-04-11T04:37:17.393Z",
+                "DeletedAt": null,
+                "name": "pradanaaa",
+                "email": "pradanaz@mail.com"
+            }
+        },
+        {
+            "ID": 3,
+            "CreatedAt": "2023-04-11T04:43:37.365Z",
+            "UpdatedAt": "2023-04-11T04:43:37.365Z",
+            "DeletedAt": null,
+            "is_paid": false,
+            "grand_total": 65000,
+            "user_id": 9,
+            "user": {
+                "ID": 9,
+                "CreatedAt": "2023-04-11T04:37:17.393Z",
+                "UpdatedAt": "2023-04-11T04:37:17.393Z",
+                "DeletedAt": null,
+                "name": "pradanaaa",
+                "email": "pradanaz@mail.com"
+            }
+        },
+        {
+            "ID": 4,
+            "CreatedAt": "2023-04-11T04:43:52.247Z",
+            "UpdatedAt": "2023-04-11T04:43:52.247Z",
+            "DeletedAt": null,
+            "is_paid": false,
+            "grand_total": 50000,
+            "user_id": 9,
+            "user": {
+                "ID": 9,
+                "CreatedAt": "2023-04-11T04:37:17.393Z",
+                "UpdatedAt": "2023-04-11T04:37:17.393Z",
+                "DeletedAt": null,
+                "name": "pradanaaa",
+                "email": "pradanaz@mail.com"
+            }
+        }
+    ]
+}

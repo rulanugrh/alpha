@@ -1,0 +1,8 @@
+{
+    "code": 201,
+    "status": "success upload book",
+    "data": {
+        "name": "Ada Cinta di SMK",
+        "price": 90000
+    }
+}
