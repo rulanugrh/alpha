@@ -17,7 +17,7 @@ Heyyo omaetachi, this opportunity I will make a project to learn about microserv
 | API Gateway         | :heavy_check_mark:  |
 | Frontend            | Ongoing             |
 | Pipeline            | Ongoing             |
-| Order               | Ongoing             |
+| Order               | :heavy_check_mark:  |
 | Kurbenetes          | Ongoing             |
 
 # Technology Used
