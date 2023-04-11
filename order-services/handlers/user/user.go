@@ -17,17 +17,18 @@ func NewUserController(user user.UserServices) UserController {
 	}
 }
 
-func (usr *usercontroller) Create(ctx echo.Context) error {
+func (usr usercontroller) Create(ctx echo.Context) error {
 	var user domain.User
 	ctx.Bind(&user)
 
 	users, err := usr.users.Create(user)
 	if err != nil {
-		return ctx.JSON(400, web.UserFailure{
+		ctx.JSON(400, web.UserFailure{
 			Code:   400,
 			Status: "cant creaet user",
 			Error:  err,
 		})
+
 	}
 
 	return ctx.JSON(201, web.UserSuccess{

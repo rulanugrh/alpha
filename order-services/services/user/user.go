@@ -18,7 +18,7 @@ func NewUserServices(user user.UserRepository) UserServices {
 	}
 }
 
-func (usr *userservice) Create(user domain.User) (web.UserResponse, error) {
+func (usr userservice) Create(user domain.User) (web.UserResponse, error) {
 	users, err := usr.users.Create(user)
 	if err != nil {
 		return web.UserResponse{}, errors.New("cant create user")

@@ -14,19 +14,19 @@ func Run(book book.BookController, user user.UserController, order order.OrderCo
 	conf.AutoMigrate(&domain.Book{}, &domain.User{}, &domain.Order{}, &domain.OrderItem{})
 
 	serv := echo.New()
-	apiBook := serv.Group("/books/")
+	apiBook := serv.Group("/books")
 	{
 		apiBook.GET("/", book.FindAll)
 		apiBook.GET("/:id", book.FindId)
 		apiBook.POST("/", book.Create)
 	}
 
-	apiUser := serv.Group("/users/")
+	apiUser := serv.Group("/users")
 	{
 		apiUser.POST("/", user.Create)
 	}
 
-	apiOrder := serv.Group("/orders/")
+	apiOrder := serv.Group("/orders")
 	{
 		apiOrder.POST("/", order.CreateOrder)
 		apiOrder.GET("/:id", order.FindId)
@@ -38,6 +38,6 @@ func Run(book book.BookController, user user.UserController, order order.OrderCo
 		apiOrder.POST("/checkout", order.Checkout)
 	}
 
-	confApp := config.GetConfig()
-	serv.Start(confApp.Host + ":" + confApp.Port)
+	// confApp := config.GetConfig()
+	serv.Start(":8000")
 }

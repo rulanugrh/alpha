@@ -13,8 +13,9 @@ func NewUserRepository() UserRepository {
 	return &userrepo{}
 }
 
-func (usr *userrepo) Create(user domain.User) (domain.User, error) {
-	err := config.DB.Create(&user).Error
+func (usr userrepo) Create(user domain.User) (domain.User, error) {
+	dbCreate := config.DB.Create(&user)
+	err := dbCreate.Error
 	if err != nil {
 		return domain.User{}, errors.New("cant create user")
 	}

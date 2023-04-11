@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -32,16 +31,11 @@ var DB *gorm.DB
 
 func GetConnect() *gorm.DB {
 
-	conf := GetConfig()
-	login := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&charset=utf8mb4",
-		conf.Database.User,
-		conf.Database.Pass,
-		conf.Database.Host,
-		conf.Database.Port,
-		conf.Database.Name,
-	)
+	// conf := GetConfig()
+	// login := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&charset=utf8mb4", conf.Database.User, conf.Database.Pass, conf.Database.Host, conf.Database.Port, conf.Database.Name)
+	dns := "admin:admin@tcp(192.168.4.117:3306)/orderservice?parseTime=true&charset=utf8mb4"
 
-	db, err := gorm.Open(mysql.Open(login), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open(dns), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
