@@ -81,3 +81,13 @@ func (or *orderrepo) DeleteCart(id uint) error {
 
 	return nil
 }
+
+func (or *orderrepo) ListNotPaid(id uint) ([]domain.Order, error) {
+	var order []domain.Order
+	err := config.DB.Where("user_id = ?", id).Where("is_paid = ?", false).Find(&order).Error
+	if err != nil {
+		return []domain.Order{}, errors.New("cant list all not paid")
+	}
+
+	return order, nil
+}

@@ -10,4 +10,5 @@ type OrderRepository interface {
 	Checkout(id uint, order domain.Order) (domain.Order, error)
 	ListCart(userId uint) ([]domain.OrderItem, error)
 	DeleteCart(id uint) error
+	ListNotPaid(id uint) ([]domain.Order, error)
 }

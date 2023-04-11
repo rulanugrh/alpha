@@ -96,3 +96,12 @@ func (or *orderservice) DeleteCart(id uint) error {
 
 	return nil
 }
+
+func (or *orderservice) ListNotPaid(id uint) ([]domain.Order, error) {
+	orders, err := or.orders.ListNotPaid(id)
+	if err != nil {
+		return []domain.Order{}, errors.New("cant find not paid")
+	}
+
+	return orders, nil
+}

@@ -13,4 +13,5 @@ type OrderService interface {
 	Checkout(id uint, order domain.Order) (web.OrderResponse, error)
 	ListCart(id uint) ([]domain.OrderItem, error)
 	DeleteCart(id uint) error
+	ListNotPaid(id uint) ([]domain.Order, error)
 }
