@@ -1,6 +1,10 @@
 package helpers
 
-import "log"
+import (
+	"log"
+
+	"github.com/rulanugrh/alpha/order/config"
+)
 
 func UserCreated() error {
 	queue, errs := Channel.QueueDeclare("user-created", false, false, false, false, nil)
@@ -16,6 +20,7 @@ func UserCreated() error {
 	go func() {
 		for d := range message {
 			log.Printf("Receive message %s: ", d.Body)
+			config.DB.Create(&d.Body)
 		}
 	}()
 
@@ -60,6 +65,7 @@ func BookCreated() error {
 	go func() {
 		for d := range message {
 			log.Printf("Receive message %s: ", d.Body)
+			config.DB.Create(&d.Body)
 		}
 	}()
 
