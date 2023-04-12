@@ -43,6 +43,11 @@ func Run(book book.BookController, user user.UserController, order order.OrderCo
 	serv.Start(confApp.RunnApp.Host + ":" + confApp.RunnApp.Port)
 
 	// Section RabbitMQ
+	_, errRabiit := helpers.GetConnection()
+	if errRabiit != nil {
+		helpers.FailError(errRabiit, "something error in rabbitmq")
+	}
+
 	errUC := helpers.UserCreated()
 	if errUC != nil {
 		helpers.FailError(errUC, "something error in this receive")

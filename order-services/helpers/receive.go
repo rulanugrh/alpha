@@ -3,11 +3,11 @@ package helpers
 import "log"
 
 func UserCreated() error {
-	queue, errs := channel.QueueDeclare("user-created", false, false, false, false, nil)
+	queue, errs := Channel.QueueDeclare("user-created", false, false, false, false, nil)
 	if errs != nil {
 		FailError(errs, "cant declare queue")
 	}
-	message, err := channel.Consume(queue.Name, "", true, false, false, false, nil)
+	message, err := Channel.Consume(queue.Name, "", true, false, false, false, nil)
 	if err != nil {
 		FailError(err, "cant join this consume")
 	}
@@ -25,11 +25,11 @@ func UserCreated() error {
 }
 
 func UserDeleted() error {
-	queue, errs := channel.QueueDeclare("user-deleted", false, false, false, false, nil)
+	queue, errs := Channel.QueueDeclare("user-deleted", false, false, false, false, nil)
 	if errs != nil {
 		FailError(errs, "cant declare queue")
 	}
-	message, err := channel.Consume(queue.Name, "", true, false, false, false, nil)
+	message, err := Channel.Consume(queue.Name, "", true, false, false, false, nil)
 	if err != nil {
 		FailError(err, "cant join this consume")
 	}
@@ -47,11 +47,11 @@ func UserDeleted() error {
 }
 
 func BookCreated() error {
-	queue, errs := channel.QueueDeclare("book-created", false, false, false, false, nil)
+	queue, errs := Channel.QueueDeclare("book-created", false, false, false, false, nil)
 	if errs != nil {
 		FailError(errs, "cant declare queue")
 	}
-	message, err := channel.Consume(queue.Name, "", true, false, false, false, nil)
+	message, err := Channel.Consume(queue.Name, "", true, false, false, false, nil)
 	if err != nil {
 		FailError(err, "cant join this consume")
 	}
@@ -69,11 +69,11 @@ func BookCreated() error {
 }
 
 func BookDeleted() error {
-	queue, errs := channel.QueueDeclare("book-deleted", false, false, false, false, nil)
+	queue, errs := Channel.QueueDeclare("book-deleted", false, false, false, false, nil)
 	if errs != nil {
 		FailError(errs, "cant declare queue")
 	}
-	message, err := channel.Consume(queue.Name, "", true, false, false, false, nil)
+	message, err := Channel.Consume(queue.Name, "", true, false, false, false, nil)
 	if err != nil {
 		FailError(err, "cant join this consume")
 	}

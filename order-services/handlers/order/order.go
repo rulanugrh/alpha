@@ -1,11 +1,17 @@
 package order
 
 import (
+	"context"
+	"encoding/json"
+	"log"
 	"strconv"
+	"time"
 
 	"github.com/labstack/echo/v4"
+	amqp "github.com/rabbitmq/amqp091-go"
 	"github.com/rulanugrh/alpha/order/entities/domain"
 	"github.com/rulanugrh/alpha/order/entities/web"
+	"github.com/rulanugrh/alpha/order/helpers"
 	"github.com/rulanugrh/alpha/order/services/order"
 )
 
@@ -31,6 +37,25 @@ func (or *ordercontroller) CreateOrder(ctx echo.Context) error {
 		})
 	}
 
+	upBody, _ := json.Marshal(response)
+	channel, errs := helpers.Channel.QueueDeclare("notif-created", false, false, false, false, nil)
+	if errs != nil {
+		log.Printf("something errors: %s", errs)
+	}
+
+	c, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	errPub := helpers.Channel.PublishWithContext(c, "", channel.Name, false, false, amqp.Publishing{
+		ContentType: "application/json",
+		Body:        upBody,
+	})
+
+	if errPub != nil {
+		log.Panicf("somethings errors: %s", errPub)
+	}
+
+	log.Printf("[*] Success Send Message: %s", upBody)
 	return ctx.JSON(201, web.OrderSuccess{
 		Code:   201,
 		Status: "Success Create Order",
