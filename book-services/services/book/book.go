@@ -25,6 +25,7 @@ func (bk *bookservice) UploadBook(book domain.Book) (web.BookResponse, error) {
 	}
 
 	resp := web.BookResponse{
+		Id:     response.ID,
 		Name:   response.Name,
 		Author: response.Author,
 		Price:  response.Price,
@@ -41,6 +42,7 @@ func (bk *bookservice) UpdateBook(id uint, book domain.Book) (web.BookResponse, 
 	}
 
 	return web.BookResponse{
+		Id:     response.ID,
 		Name:   response.Name,
 		Author: response.Author,
 		Price:  response.Price,
@@ -55,6 +57,7 @@ func (bk *bookservice) FindId(id uint) (web.BookResponse, error) {
 	}
 
 	return web.BookResponse{
+		Id:     response.ID,
 		Name:   response.Name,
 		Author: response.Author,
 		Price:  response.Price,

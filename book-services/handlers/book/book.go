@@ -1,12 +1,16 @@
 package book
 
 import (
+	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	amqp "github.com/rabbitmq/amqp091-go"
 	"github.com/rulanugrh/alpha/book/entities/domain"
 	"github.com/rulanugrh/alpha/book/entities/web"
+	"github.com/rulanugrh/alpha/book/helpers"
 	books "github.com/rulanugrh/alpha/book/services/book"
 )
 
@@ -41,6 +45,22 @@ func (bk *bookcontroller) UploadBook(ctx *gin.Context) {
 		Data:   response,
 	}
 
+	upBody, _ := json.Marshal(response)
+	channel, errs := helpers.Channel.QueueDeclare("book-created", false, false, false, false, nil)
+	if errs != nil {
+		log.Printf("something errors: %s", errs)
+	}
+
+	errPub := helpers.Channel.PublishWithContext(ctx, "", channel.Name, false, false, amqp.Publishing{
+		ContentType: "application/json",
+		Body:        upBody,
+	})
+
+	if errPub != nil {
+		log.Panicf("somethings errors: %s", errPub)
+	}
+
+	log.Printf("[*] Success Send Message: %s", upBody)
 	ctx.JSON(http.StatusOK, success)
 }
 

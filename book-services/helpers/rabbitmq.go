@@ -7,7 +7,7 @@ import (
 	"github.com/rulanugrh/alpha/book/config"
 )
 
-var channel *amqp.Channel
+var Channel *amqp.Channel
 
 func GetConnection() *amqp.Channel {
 	conf := config.GetConfig()
@@ -31,7 +31,7 @@ func GetConnection() *amqp.Channel {
 	}
 	defer ch.Close()
 
-	channel = ch
+	Channel = ch
 	return ch
 
 }
