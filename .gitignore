@@ -1,6 +1,7 @@
 book-services/.env
 order-services/.env
 user-services/.env
+notif-services/.env
 .env
 
 user-services/node_modules/*
