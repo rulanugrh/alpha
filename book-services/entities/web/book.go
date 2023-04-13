@@ -12,11 +12,9 @@ type BookFailure struct {
 }
 
 type BookResponse struct {
-	Id     uint   `json:"id" form:"id"`
-	Name   string `json:"name" form:"name"`
-	Price  int    `json:"price" form:"price"`
-	Stock  int    `json:"stock" form:"stock"`
-	Author string `json:"author" form:"author"`
+	Id    uint   `json:"id" form:"id"`
+	Name  string `json:"name" form:"name"`
+	Price int    `json:"price" form:"price"`
 }
 
 type SellerResponse struct {

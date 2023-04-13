@@ -25,11 +25,10 @@ func (bk *bookservice) UploadBook(book domain.Book) (web.BookResponse, error) {
 	}
 
 	resp := web.BookResponse{
-		Id:     response.ID,
-		Name:   response.Name,
-		Author: response.Author,
-		Price:  response.Price,
-		Stock:  response.Stock,
+		Id:   response.ID,
+		Name: response.Name,
+
+		Price: response.Price,
 	}
 
 	return resp, nil
@@ -42,11 +41,10 @@ func (bk *bookservice) UpdateBook(id uint, book domain.Book) (web.BookResponse, 
 	}
 
 	return web.BookResponse{
-		Id:     response.ID,
-		Name:   response.Name,
-		Author: response.Author,
-		Price:  response.Price,
-		Stock:  response.Stock,
+		Id:   response.ID,
+		Name: response.Name,
+
+		Price: response.Price,
 	}, nil
 }
 
@@ -57,11 +55,10 @@ func (bk *bookservice) FindId(id uint) (web.BookResponse, error) {
 	}
 
 	return web.BookResponse{
-		Id:     response.ID,
-		Name:   response.Name,
-		Author: response.Author,
-		Price:  response.Price,
-		Stock:  response.Stock,
+		Id:   response.ID,
+		Name: response.Name,
+
+		Price: response.Price,
 	}, nil
 }
 

@@ -17,8 +17,8 @@ type Book struct {
 
 type Seller struct {
 	gorm.Model
-	Name  string `json:"name" form:"name" validate:"required"`
-	Books []Book `json:"books" form:"books"`
+	Name string `json:"name" form:"name" validate:"required"`
+	//	Books []Book `json:"books" form:"books"`
 }
 
 type Category struct {

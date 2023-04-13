@@ -1,9 +1,11 @@
 package helpers
 
 import (
+	"encoding/json"
 	"log"
 
-	"github.com/rulanugrh/alpha/book/config"
+	"github.com/rulanugrh/alpha/book/entities/domain"
+	books "github.com/rulanugrh/alpha/book/repository/book"
 )
 
 func UserCreated() error {
@@ -20,7 +22,14 @@ func UserCreated() error {
 	go func() {
 		for d := range message {
 			log.Printf("Receive message %s: ", d.Body)
-			config.DB.Create(&d.Body)
+			var payload domain.Seller
+			err := json.Unmarshal(d.Body, &payload)
+			if err != nil {
+				log.Printf("Something error unmarshal %s:", err)
+			}
+
+			books.NewBookRepository().Seller(payload)
+
 		}
 	}()
 
