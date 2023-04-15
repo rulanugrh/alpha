@@ -16,6 +16,13 @@ type NotifDB struct {
 	Name     string
 	Password string
 	Host     string
+
+	RabbitMQ struct {
+		Host string
+		Pass string
+		User string
+		Port string
+	}
 }
 
 var notifDB *NotifDB
@@ -57,6 +64,10 @@ func initConfig() *NotifDB {
 		conf.Host = "localhost"
 		conf.Password = "admin"
 		conf.Name = "admin"
+		conf.RabbitMQ.Host = "localhost"
+		conf.RabbitMQ.Port = ""
+		conf.RabbitMQ.User = "guest"
+		conf.RabbitMQ.Pass = "guest"
 		return &conf
 	}
 
@@ -64,5 +75,9 @@ func initConfig() *NotifDB {
 	conf.Password = os.Getenv("MONGODB_PASS")
 	conf.Name = os.Getenv("MONGODB_NAME")
 
+	conf.RabbitMQ.Host = os.Getenv("RABBITMQ_HOST")
+	conf.RabbitMQ.Port = os.Getenv("RABBITMQ_PORT")
+	conf.RabbitMQ.User = os.Getenv("RABBITMQ_USER")
+	conf.RabbitMQ.Pass = os.Getenv("RABBITMQ_PASS")
 	return &conf
 }
