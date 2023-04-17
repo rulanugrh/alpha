@@ -10,7 +10,7 @@ Heyyo omaetachi, this opportunity I will make a project to learn about microserv
 | Feature             | Status              | 
 |---------------------|---------------------|
 | Authentication      | :heavy_check_mark:  |
-| Message Broker      | Ongoing             |
+| Message Broker      | :heavy_check_mark:  |
 | Book                | :heavy_check_mark:  |
 | User                | :heavy_check_mark:  |
 | Dockerize           | :heavy_check_mark:  |
