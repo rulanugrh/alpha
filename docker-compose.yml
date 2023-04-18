@@ -76,5 +76,16 @@ services:
     networks:
       - alphanetwork
 
+  logstashconf:
+    container_name: logs
+    image: docker.elastic.co/logstash/logstash:8.7.0
+    environment:
+      - ./logstash.conf:/usr/share/logstash/config/logstash.conf
+    ports:
+      - 5044:5044
+    networks:
+      - alphanetwork
+
+
 networks:
   alphanetwork:
