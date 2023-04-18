@@ -57,6 +57,7 @@ export const registerUser = async(req, res) => {
                 console.log("[x] Send %s", response);
             })
         }) 
+        
     } catch (error) {
         res.status(500).json({
             'msg': 'failure cant create user',

@@ -62,13 +62,13 @@ func (bk *bookservice) FindId(id uint) (web.BookResponse, error) {
 	}, nil
 }
 
-func (bk *bookservice) DeleteBook(id uint) error {
+func (bk *bookservice) DeleteBook(id uint) (web.BookDeleteRespons, error) {
 	err := bk.book.Delete(id)
 	if err != nil {
-		return errors.New("cant delete book")
+		return web.BookDeleteRespons{}, errors.New("cant delete book")
 	}
 
-	return nil
+	return web.BookDeleteRespons{Id: id}, nil
 }
 
 func (bk *bookservice) FindAll() ([]domain.Book, error) {

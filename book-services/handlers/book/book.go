@@ -90,7 +90,7 @@ func (bk *bookcontroller) DeleteBook(ctx *gin.Context) {
 	getId := ctx.Param("id")
 	ID, _ := strconv.Atoi(getId)
 
-	err := bk.bookcontroll.DeleteBook(uint(ID))
+	response, err := bk.bookcontroll.DeleteBook(uint(ID))
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, web.BookFailure{
 			Code:   500,
@@ -102,7 +102,7 @@ func (bk *bookcontroller) DeleteBook(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, web.BookSuccess{
 		Code:   200,
 		Status: "success delete book",
-		Data:   nil,
+		Data:   response,
 	})
 }
 

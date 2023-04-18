@@ -16,6 +16,9 @@ type BookResponse struct {
 	Name  string `json:"name" form:"name"`
 	Price int    `json:"price" form:"price"`
 }
+type BookDeleteRespons struct {
+	Id uint `json:"id" form:"id"`
+}
 
 type SellerResponse struct {
 	Name string `json:"name" form:"name"`
