@@ -2,7 +2,7 @@ import user from '../models/userModel.js'
 import bcrypt from 'bcrypt';
 import env from '../helpers/env.js'
 import jwt from 'jsonwebtoken'
-
+import amqp from 'amqplib';
 
 export const testingToken = async(req, res) => {
     try {
@@ -15,7 +15,8 @@ export const testingToken = async(req, res) => {
                     'status': 'success'
                 })
             }
-        })   
+        })
+
     } catch (error) {
         res.status(500).json({
             'error': error.message
@@ -35,6 +36,26 @@ export const registerUser = async(req, res) => {
                     'code': 201,
                 })
             }
+        })
+        amqp.connect('amqp://localhost', function(error0, connection){
+            if (error0) {
+                throw error0
+            }
+
+            connection.createChannel(function(error1, channel) {
+                if (error1) {
+                    throw error1
+                }
+
+                var queue = "user-created"
+
+                channel.assertQueue(queue, {
+                    durable: false
+                });
+
+                channel.sendToQueue(queue, Buffer.from(response))
+                console.log("[x] Send %s", response);
+            })
         }) 
     } catch (error) {
         res.status(500).json({
