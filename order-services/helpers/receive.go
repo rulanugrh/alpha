@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/rulanugrh/alpha/order/entities/domain"
+	"github.com/rulanugrh/alpha/order/entities/web"
 	"github.com/rulanugrh/alpha/order/repository/book"
 	"github.com/rulanugrh/alpha/order/repository/user"
 )
@@ -104,7 +105,15 @@ func BookDeleted() error {
 
 	go func() {
 		for d := range message {
+			var payload web.BookDelete
 			log.Printf("Receive message %s: ", d.Body)
+
+			err := json.Unmarshal(d.Body, &payload)
+			if err != nil {
+				log.Printf("error cant unmarshal")
+			}
+
+			book.NewBookRepository().Delete(payload.Id)
 		}
 	}()
 

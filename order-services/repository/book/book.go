@@ -41,3 +41,13 @@ func (bk *bookrepo) FindID(id uint) (domain.Book, error) {
 
 	return book, nil
 }
+
+func (bk *bookrepo) Delete(id uint) error {
+	var book domain.Book
+	err := config.DB.Where("id = ?", id).Delete(&book)
+	if err != nil {
+		return errors.New("cant delete book")
+	}
+
+	return nil
+}

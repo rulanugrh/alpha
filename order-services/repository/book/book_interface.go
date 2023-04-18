@@ -6,4 +6,5 @@ type BookRepository interface {
 	Create(book domain.Book) (domain.Book, error)
 	FindAll() ([]domain.Book, error)
 	FindID(id uint) (domain.Book, error)
+	Delete(id uint) error
 }
