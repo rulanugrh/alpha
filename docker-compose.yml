@@ -7,7 +7,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
     networks:
       - alphanetwork
     
@@ -80,7 +80,7 @@ services:
     container_name: logs
     image: docker.elastic.co/logstash/logstash:8.7.0
     environment:
-      - ./logstash.conf:/usr/share/logstash/config/logstash.conf
+      - ./config/logstash.conf:/usr/share/logstash/config/logstash.conf
     ports:
       - 5044:5044
     networks:
