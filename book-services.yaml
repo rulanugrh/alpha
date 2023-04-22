@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bookserv
+  labels:
+    app: bookserv
+    owner: github.com/rulanugrh
+spec:
+  ports:
+    - port: 3000
+      targetPort: book-server
+  selector:
+    app: bookserv
+  type: LoadBalancer
