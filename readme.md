@@ -19,6 +19,7 @@ Heyyo omaetachi, this opportunity I will make a project to learn about microserv
 | Pipeline            | Ongoing             |
 | Order               | :heavy_check_mark:  |
 | Kurbenetes          | Ongoing             |
+| Monitoring          | Ongoing             |
 
 # Technology Used
 - [`Docker`](https://www.docker.com) - Main tools to build this project
