@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql-book
+  labels:
+    app: bookserv
+    owner: github.com/rulanugrh
+    role: mysql-book
+spec:
+  ports:
+    - port: 3306
+      targetPort: mysql-book-server
+  selector:
+    app: bookserv
+    role: mysql-book
+  type: LoadBalancer

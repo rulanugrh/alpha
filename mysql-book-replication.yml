@@ -1,0 +1,25 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: mysql-book
+  labels:
+    app: bookserv
+    role: db-data
+spec:
+  replicas: 1
+  selector:
+    app: bookserv
+    role: db-data
+  template:
+    metadata:
+      labels:
+        app: bookserv
+        role: db-data
+      data:
+    spec:
+      containers:
+      - name: mysql-book
+        image: registry.k8s.io/redis:e2e
+        ports:
+        - name: mysql-book-server
+          containerPort: 3306
