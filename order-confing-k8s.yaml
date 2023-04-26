@@ -1,0 +1,37 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: ordersev
+  labels:
+    app: ordersev
+    owner: github.com/rulanugrh
+spec:
+  replicas: 3
+  selector:
+    app: ordersev
+  template:
+    metadata:
+      labels:
+        app: ordersev
+    spec:
+      containers:
+      - name: ordersev-container
+        image: kyzxo/ordersev:v1
+        ports:
+          - name: book-server
+            containerPort: 3000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ordersev
+  labels:
+    app: ordersev
+    owner: github.com/rulanugrh
+spec:
+  ports:
+    - port: 3000
+      targetPort: book-server
+  selector:
+    app: ordersev
+  type: LoadBalancer
