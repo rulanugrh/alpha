@@ -1,0 +1,43 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: mysql-order
+  labels:
+    app: ordersev
+    role: db-data
+spec:
+  replicas: 1
+  selector:
+    app: ordersev
+    role: db-data
+  template:
+    metadata:
+      labels:
+        app: ordersev
+        role: db-data
+      data:
+    spec:
+      containers:
+      - name: mysql-order
+        image: registry.k8s.io/redis:e2e
+        ports:
+        - name: mysql-order-server
+          containerPort: 3306
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql-order
+  labels:
+    app: ordersev
+    owner: github.com/rulanugrh
+    role: mysql-order
+spec:
+  ports:
+    - port: 3306
+      targetPort: mysql-order-server
+  selector:
+    app: ordersev
+    role: mysql-order
+  type: LoadBalancer
