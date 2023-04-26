@@ -36,7 +36,7 @@ Heyyo omaetachi, this opportunity I will make a project to learn about microserv
 This project is ongoing, and will continue to be updated at any time. For now there are 2 services namely `user` and `book`. For installation is quite easy 
 
 > First, installastion kurbenetes if u want use it
-```bash
+```console
 alpha@chentauri:~$ sudo adduser kurbenetes
 alpha@chentauri:~$ sudo usermod -aG sudo kurbenetes
 alpha@chentauri:~$ su kurbenetes
@@ -44,25 +44,25 @@ alpha@chentauri:~$ sudo apt install docker docker.io docker-compose -y
 ```
 
 > Step 2: Install k8s with wget
-```bash
+```console
 alpha@chentauri:~$ sudo wget https://github.com/kubernetes/minikube/releases/download/v1.24.0/minikube-linux-amd64
 alpha@chentauri:~$ sudo mv minikube-linux-amd64 minikube
 ```
 
 > Step 3: Change Permission minikube n save to /usr/local/bin/minukube
-```bash
+```console
 alpha@chentauri:~$ sudo mv minikube /usr/local/bin/minikube
 ```
 
 > Step 4: Configure kubectl
-```bash
+```console
 alpha@chentauri:~$ sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 alpha@chentauri:~$ sudo chmod +x kubectl
 alpha@chentauri:~$ sudo mv kubectl /user/local/bin/kubectl
 ```
 
 > Step 5: minikube can start n you can see detail
-```bash
+```console
 alpha@chentauri:~$ minikube start
 * minikube v1.24.0 on Debian 10.2
 * Using the docker driver based on existing profile
@@ -77,7 +77,7 @@ Server Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.3", GitCom
 ```
 
 > If you install from docker you can must do this
-```bash
+```console
 alpha@chentauri:~$ sudo git clone https://github.com/rulanugrh/alpha
 alpha@chentauri:~$ chmod +x install
 alpha@chentauri:~$ ./install app
