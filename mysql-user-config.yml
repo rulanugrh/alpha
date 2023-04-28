@@ -1,0 +1,43 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: mysql-user
+  labels:
+    app: userserv
+    role: db-data
+spec:
+  replicas: 1
+  selector:
+    app: userserv
+    role: db-data
+  template:
+    metadata:
+      labels:
+        app: userserv
+        role: db-data
+      data:
+    spec:
+      containers:
+      - name: mysql-user
+        image: registry.k8s.io/redis:e2e
+        ports:
+        - name: mysql-user-server
+          containerPort: 3306
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql-user
+  labels:
+    app: userserv
+    owner: github.com/rulanugrh
+    role: mysql-user
+spec:
+  ports:
+    - port: 3306
+      targetPort: mysql-user-server
+  selector:
+    app: userserv
+    role: mysql-user
+  type: LoadBalanceroos

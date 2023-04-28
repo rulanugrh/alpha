@@ -1,0 +1,37 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: userserv
+  labels:
+    app: userserv
+    owner: github.com/rulanugrh
+spec:
+  replicas: 3
+  selector:
+    app: userserv
+  template:
+    metadata:
+      labels:
+        app: userserv
+    spec:
+      containers:
+      - name: userserv-container
+        image: kyzxo/userserv:v1
+        ports:
+          - name: user-server
+            containerPort: 3000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: userserv
+  labels:
+    app: userserv
+    owner: github.com/rulanugrh
+spec:
+  ports:
+    - port: 3000
+      targetPort: user-server
+  selector:
+    app: userserv
+  type: LoadBalancer
