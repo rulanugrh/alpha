@@ -34,6 +34,11 @@ metadata:
     owner: github.com/rulanugrh
     role: mysql-user
 spec:
+  env:
+    - name: MYSQL_DATABASE
+      value: bookdb
+    - name: MYSQL_ROOT_PASSWORD
+      value: password
   ports:
     - port: 3306
       targetPort: mysql-user-server

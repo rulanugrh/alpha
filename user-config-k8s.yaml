@@ -4,7 +4,7 @@ metadata:
   name: userserv
   labels:
     app: userserv
-    owner: github.com/rulanugrh
+    owner: github.com/rulanugrhc
 spec:
   replicas: 3
   selector:
