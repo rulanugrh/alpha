@@ -1,23 +1,58 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haii | Saya dapunta</title>
-    <style>
-        body{
-            background-color: aqua;
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="./build/output/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <div align="center">
-        <h1>Hello</h1>
-        <h2>Hello</h2>
-        <h3>Hello</h3>
-        <h4>Hello</h4>
-        <h5>Hello</h5>     
-        <img src="https://i.pinimg.com/originals/ca/e1/1d/cae11df222ff8639d02aa7b81d1d296a.gif" alt="">
-    </div>
-</body>
+<body class="bg-putih">
+
+    <!-- Navigation Bar -->
+    <nav class="w-full py-7 mt-10">
+        <div class="w-11/12 m-auto flex justify-between items-center">
+            <div class="font-firacode font-bold text-xl md:text-2xl lg:text-3xl text-merah">Alphastore</div>
+            <ul class="flex gap-3 md:gap-5 lg:gap-7 text-navy font-firacode font-thin text-xl md:text-2xl lg:text-3xl">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#store">Store</a></li>
+                <li><a href="#help">Help</a></li>
+            </ul>
+            
+            <!-- 
+                <div class="flex gap-2 md:gap-5 lg:gap-7 text-xl md:text-2xl lg:text-3xl font-firacode">
+                <a href="#login" class="bg-navy text-kuning font-bold text-xl md:text-2xl lg:text-2xl py-3 px-8 rounded-full">Login</a>
+                <a href="#signup" class="bg-gray-500 text-navy font-bold text-xl md:text-2xl lg:text-2xl py-3 px-8 rounded-full">Sign Up</a>
+            </div>       
+             -->
+            
+    
+        </div>
+    </nav>
+    
+    <!-- Home Start -->
+    <section id="home">
+        <div class="container">
+            <div class="flex flex-wrap font-firacode mt-10">
+                <div class="w-full self-center px-4 lg:w-1/2">
+                    <h1 class="w-10/12 text-xl md:text-2xl lg:text-5xl drop-shadow-2xl font-bold text-navy">Welcome To <span class="text-merah text-xl md:text-2xl lg:text-5xl"> Alphastore</span>
+                    </h1>
+                    <p class="mt-5 font-thin text-navy lg:text-3xl leading-relaxed mb-10 w-10/12">
+                        Alphastore adalah toko yang menyediakan berbagai macam buku, novel, dan komik dengan harga yang ramah bagi pelajar
+                    </p>
+                    <i class="bg-navy text-kuning font-bold text-xl py-3 px-8 rounded-full mt-5 fa-solid fa-cart-shopping">Store</i>
+                </div>
+                <div class="w-full self-end px-4 lg:w-1/2">
+                    <div class="mt-10">
+                        <img src="./img/profil.png" alt="Alphastore" class="max-w-full mx-auto" height="600" width="600" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Home End -->
+
+</body> 
 </html>

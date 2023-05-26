@@ -6,3 +6,5 @@ notif-services/.env
 
 user-services/node_modules/*
 user-services/node_modules/
+view/node_modules/*
+view/node_modules/
