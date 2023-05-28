@@ -682,6 +682,18 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.mb-5{
+  margin-bottom: 1.25rem;
+}
+
+.mb-7{
+  margin-bottom: 1.75rem;
+}
+
+.mr-3{
+  margin-right: 0.75rem;
+}
+
 .mt-10{
   margin-top: 2.5rem;
 }
@@ -692,18 +704,6 @@ video {
 
 .mt-5{
   margin-top: 1.25rem;
-}
-
-.mb-5{
-  margin-bottom: 1.25rem;
-}
-
-.mb-6{
-  margin-bottom: 1.5rem;
-}
-
-.mb-7{
-  margin-bottom: 1.75rem;
 }
 
 .box-border{
@@ -805,6 +805,10 @@ video {
   display: none;
 }
 
+.h-9{
+  height: 2.25rem;
+}
+
 .w-10\/12{
   width: 83.333333%;
 }
@@ -813,20 +817,12 @@ video {
   width: 91.666667%;
 }
 
+.w-9{
+  width: 2.25rem;
+}
+
 .w-full{
   width: 100%;
-}
-
-.w-8\/12{
-  width: 66.666667%;
-}
-
-.w-4\/12{
-  width: 33.333333%;
-}
-
-.w-7\/12{
-  width: 58.333333%;
 }
 
 .max-w-full{
@@ -1723,6 +1719,10 @@ video {
   border-width: 1px;
 }
 
+.border-2{
+  border-width: 2px;
+}
+
 .border-x{
   border-left-width: 1px;
   border-right-width: 1px;
@@ -1781,6 +1781,10 @@ video {
   border-style: none;
 }
 
+.border-navy\/30{
+  border-color: rgb(60 72 107 / 0.3);
+}
+
 .bg-\[rgb\(255\2c 0\2c 0\)\]{
   --tw-bg-opacity: 1;
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
@@ -1796,14 +1800,22 @@ video {
   background-color: rgb(60 72 107 / var(--tw-bg-opacity));
 }
 
+.bg-navy\/10{
+  background-color: rgb(60 72 107 / 0.1);
+}
+
 .bg-putih{
   --tw-bg-opacity: 1;
   background-color: rgb(240 240 240 / var(--tw-bg-opacity));
 }
 
-.bg-second{
+.bg-merah{
   --tw-bg-opacity: 1;
-  background-color: rgb(206 211 226 / var(--tw-bg-opacity));
+  background-color: rgb(244 80 80 / var(--tw-bg-opacity));
+}
+
+.bg-navy\/20{
+  background-color: rgb(60 72 107 / 0.2);
 }
 
 .decoration-slice{
@@ -1891,6 +1903,10 @@ video {
   background-origin: content-box;
 }
 
+.fill-current{
+  fill: currentColor;
+}
+
 .object-contain{
   -o-object-fit: contain;
      object-fit: contain;
@@ -1936,16 +1952,20 @@ video {
   padding-bottom: 1.75rem;
 }
 
-.pb-32{
-  padding-bottom: 8rem;
-}
-
-.pt-36{
-  padding-top: 9rem;
+.pb-10{
+  padding-bottom: 2.5rem;
 }
 
 .pb-20{
   padding-bottom: 5rem;
+}
+
+.pt-10{
+  padding-top: 2.5rem;
+}
+
+.pt-36{
+  padding-top: 9rem;
 }
 
 .text-left{
@@ -2020,10 +2040,6 @@ video {
 
 .font-bold{
   font-weight: 700;
-}
-
-.font-normal{
-  font-weight: 400;
 }
 
 .font-thin{
@@ -2104,6 +2120,11 @@ video {
 
 .text-\[\#336699\]\/\[\.35\]{
   color: rgb(51 102 153 / .35);
+}
+
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .text-blue-500{
@@ -2488,8 +2509,48 @@ video {
   }
 }
 
+.hover\:border-navy:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(60 72 107 / var(--tw-border-opacity));
+}
+
+.hover\:bg-navy:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 72 107 / var(--tw-bg-opacity));
+}
+
 .hover\:font-bold:hover{
   font-weight: 700;
+}
+
+.hover\:text-insta:hover{
+  --tw-text-opacity: 1;
+  color: rgb(228 64 95 / var(--tw-text-opacity));
+}
+
+.hover\:text-linked:hover{
+  --tw-text-opacity: 1;
+  color: rgb(10 102 194 / var(--tw-text-opacity));
+}
+
+.hover\:text-merah:hover{
+  --tw-text-opacity: 1;
+  color: rgb(244 80 80 / var(--tw-text-opacity));
+}
+
+.hover\:text-twit:hover{
+  --tw-text-opacity: 1;
+  color: rgb(29 161 242 / var(--tw-text-opacity));
+}
+
+.hover\:text-black:hover{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.hover\:text-kuning:hover{
+  --tw-text-opacity: 1;
+  color: rgb(249 217 73 / var(--tw-text-opacity));
 }
 
 .before\:hover\:text-center:hover::before{
@@ -2538,8 +2599,16 @@ video {
 }
 
 @media (min-width: 1024px){
+  .lg\:mt-5{
+    margin-top: 1.25rem;
+  }
+
   .lg\:w-1\/2{
     width: 50%;
+  }
+
+  .lg\:w-10\/12{
+    width: 83.333333%;
   }
 
   .lg\:w-8\/12{
@@ -2548,6 +2617,14 @@ video {
 
   .lg\:gap-7{
     gap: 1.75rem;
+  }
+
+  .lg\:pb-20{
+    padding-bottom: 5rem;
+  }
+
+  .lg\:pt-20{
+    padding-top: 5rem;
   }
 
   .lg\:text-2xl{
@@ -2563,11 +2640,6 @@ video {
   .lg\:text-5xl{
     font-size: 3rem;
     line-height: 1;
-  }
-
-  .lg\:text-xl{
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 }
 

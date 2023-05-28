@@ -12,7 +12,10 @@ module.exports = {
         merah: '#f45050',
         kuning: '#f9d949',
         putih: '#f0f0f0',
-        second: '#ced3e2'
+        second: '#ced3e2',
+        twit: "#1DA1F2",
+        insta: "#E4405F",
+        linked: "#0A66C2"
       },
       fontFamily: {
         firacode: "'Fira Code', monospace;"
