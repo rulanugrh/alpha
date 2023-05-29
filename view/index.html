@@ -10,30 +10,44 @@
 </head>
 <body class="bg-putih">
 
-
-    <!--
-
-    <nav class="w-full py-7 mt-10">
-        <div class="w-11/12 m-auto flex justify-between items-center">
-            <div class="font-firacode font-bold text-xl md:text-2xl lg:text-3xl text-merah">Alphastore</div>
-            <ul class="flex gap-3 md:gap-5 lg:gap-7 text-navy font-firacode font-thin text-xl md:text-2xl lg:text-3xl">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#store">Store</a></li>
-                <li><a href="#help">Help</a></li>
-            </ul>
-            
-             
-            <div class="flex gap-2 md:gap-5 lg:gap-7 text-xl md:text-2xl lg:text-3xl font-firacode">
-                <a href="#login" class="bg-navy text-kuning font-bold text-xl md:text-2xl lg:text-2xl py-3 px-8 rounded-full">Login</a>
-                <a href="#signup" class="bg-gray-500 text-navy font-bold text-xl md:text-2xl lg:text-2xl py-3 px-8 rounded-full">Sign Up</a>
-            </div>       
-             
-            
-    
+    <!-- Header Start -->
+    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+        <div class="container">
+            <div class="flex items-center justify-between relative">
+                <div class="px-4">
+                    <a href="#home" class="font-bold lg:text-2xl text-merah text-lg md:text-xl block py-6">Alphastore</a>
+                </div>
+                <div class="flex items-center px-4">
+                    <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+                        <span class="hamburger-line origin-top-left transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"></span>
+                    </button>
+                    <nav id="nav-menu" class="hidden absolute bg-putih py-5 shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                        <ul class="block lg:flex">
+                            <li class="group">
+                                <a href="#home" class="font-firacode lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">Home</a>
+                            </li>
+                            <li class="group">
+                                <a href="#about" class="font-firacode lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">About</a>
+                            </li>
+                            <li class="group">
+                                <a href="#store" class="font-firacode lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">Store</a>
+                            </li>
+                            <li class="group">
+                                <a href="#help" class="font-firacode lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">Help</a>
+                            </li>
+                            <li class="group">
+                                <a href="#login" class="font-firacode font-semibold lg:text-2xl text-kuning hover:text-putih py-2 px-4 mx-8 flex rounded-xl bg-navy hover:bg-merah ">Login</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
-    </nav>
--->
+    </header>
+    <!-- Header End -->
+
     <!-- Home Start -->
     <section id="home" class="pt-36 pb-20">
         <div class="container">
@@ -44,14 +58,14 @@
                     <p class="mt-5 font-thin text-navy lg:text-2xl leading-relaxed mb-10 w-10/12">
                         Alphastore adalah toko yang menyediakan berbagai macam buku, novel, dan komik dengan harga yang ramah bagi pelajar
                     </p>
-                    <a href="https://github.com/rulanugrh/alpha" class="bg-navy/20 text-merah hover:bg-navy hover:text-kuning font-bold text-base py-3 px-8 rounded-full lg:mt-5 fa-solid fa-cart-shopping"> Store</a>
+                    <a href="https://github.com/rulanugrh/alpha" class="bg-navy text-kuning hover:bg-merah hover:text-putih font-bold text-base py-3 px-8 rounded-full lg:mt-5 fa-solid fa-cart-shopping"> Store</a>
                 </div>
                 <div class="w-full self-end px-4 lg:w-1/2">
                     <div class="mt-10">
                         <img src="./img/profil.png" alt="Alphastore" class="max-w-full mx-auto" height="500" width="500" />
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </section>
     <!-- Home End -->
@@ -90,8 +104,21 @@
     </section>
     <!-- About End -->
 
-    <section>
-
+    <!-- Help Start-->
+    <section id="help" class="pt-36">
+        <div class="container">
+            <div class="flex flex-wrap firacode">
+                <div class="w-full self-center px-4 ">
+                    <a href="#" class="text-navy drop-shadow-2xl drop-shadow-merah">
+                        <svg role="img" viewBox="0 0 24 24" width="150" class="fill-current" xmlns="http://www.w3.org/2000/svg"><title>Home Assistant Community Store</title><path d="M1.63.47a.393.393 0 0 0-.39.39v2.417c0 .212.177.39.39.39h20.74c.213 0 .39-.178.39-.39V.859a.393.393 0 0 0-.39-.39zm-.045 4.126a.41.41 0 0 0-.407.337l-1.17 6.314C0 11.274 0 11.3 0 11.327v2.117c0 .23.186.416.416.416h23.168c.23 0 .416-.186.416-.416v-2.126c0-.027 0-.053-.009-.08l-1.169-6.305a.41.41 0 0 0-.407-.337zM1.7 14.781a.457.457 0 0 0-.46.46v7.829c0 .257.203.46.46.46h14.108c.257 0 .46-.203.46-.46v-6.589c0-.257.204-.46.461-.46h4.02c.258 0 .461.203.461.46v6.589c0 .257.204.46.46.46h.62a.456.456 0 0 0 .461-.46v-7.829a.458.458 0 0 0-.46-.46zm1.842 1.55h7.847c.212 0 .39.177.39.39V21.6c0 .212-.178.39-.39.39H3.542a.393.393 0 0 1-.39-.39v-4.88c0-.221.178-.39.39-.39Z"/></svg>
+                    </a>
+                    <p></p>
+                </div>
+            </div>
+        </div>
     </section>
+    <!-- Help End-->
+
+    <script src="./build/output/custom.js"></script>
 </body> 
 </html>
