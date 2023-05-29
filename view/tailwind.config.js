@@ -23,6 +23,33 @@ module.exports = {
       },
       screens: {
         '2xl': '1320px'
+      },
+      keyframes: {
+        'fade-in-left': {
+          '0%': {
+            opacity:'0',
+            transform: 'translateX(-20px)'
+          },
+          '100%':{
+            opacity: '1',
+            transform: 'translateX(0)'
+          },
+        },
+
+        'fade-in-rigth': {
+          '0%': {
+            opacity:'0',
+            transform: 'translateX(20px)'
+          },
+          '100%':{
+            opacity: '1',
+            transform: 'translateX(0)'
+          },
+        },
+      },
+      animation:{
+        'fade-in-left': 'fade-in-left 2s ease-out',
+        'fade-in-rigth': 'fade-in-rigth 2s ease-out'
       }
     },
   },
