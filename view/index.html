@@ -26,16 +26,16 @@
                     <nav id="nav-menu" class="hidden absolute bg-putih py-5 shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
                             <li class="group">
-                                <a href="#home" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">Home</a>
+                                <a href="#home" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex scroll-smooth">Home</a>
                             </li>
                             <li class="group">
-                                <a href="#about" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">About</a>
+                                <a href="#about" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex scroll-smooth">About</a>
                             </li>
                             <li class="group">
-                                <a href="#store" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">Store</a>
+                                <a href="#store" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex scroll-smooth">Store</a>
                             </li>
                             <li class="group">
-                                <a href="#help" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex">Help</a>
+                                <a href="#help" class="font-firacode hover:underline lg:text-2xl text-base text-black hover:text-navy py-2 mx-8 flex scroll-smooth">Help</a>
                             </li>
                             <li class="group">
                                 <a href="./src/html/login.html" class="font-firacode font-semibold lg:text-2xl text-kuning hover:text-putih py-2 px-4 mx-8 flex rounded-xl bg-navy hover:bg-merah ">Login</a>
@@ -105,19 +105,46 @@
     <!-- About End -->
 
     <!-- Help Start-->
-    <section id="help" class="pt-36">
+    <section id="help" class="pt-36 pb-32">
         <div class="container">
-            <div class="flex flex-wrap firacode">
-                <div class="w-full self-center px-4 ">
-                    <a href="#" class="text-navy drop-shadow-2xl drop-shadow-merah">
-                        <svg role="img" viewBox="0 0 24 24" width="150" class="fill-current" xmlns="http://www.w3.org/2000/svg"><title>Home Assistant Community Store</title><path d="M1.63.47a.393.393 0 0 0-.39.39v2.417c0 .212.177.39.39.39h20.74c.213 0 .39-.178.39-.39V.859a.393.393 0 0 0-.39-.39zm-.045 4.126a.41.41 0 0 0-.407.337l-1.17 6.314C0 11.274 0 11.3 0 11.327v2.117c0 .23.186.416.416.416h23.168c.23 0 .416-.186.416-.416v-2.126c0-.027 0-.053-.009-.08l-1.169-6.305a.41.41 0 0 0-.407-.337zM1.7 14.781a.457.457 0 0 0-.46.46v7.829c0 .257.203.46.46.46h14.108c.257 0 .46-.203.46-.46v-6.589c0-.257.204-.46.461-.46h4.02c.258 0 .461.203.461.46v6.589c0 .257.204.46.46.46h.62a.456.456 0 0 0 .461-.46v-7.829a.458.458 0 0 0-.46-.46zm1.842 1.55h7.847c.212 0 .39.177.39.39V21.6c0 .212-.178.39-.39.39H3.542a.393.393 0 0 1-.39-.39v-4.88c0-.221.178-.39.39-.39Z"/></svg>
-                    </a>
-                    <p></p>
+            <div class="w-full px-4">
+                <div class="max-w-xl mx-auto text-center mb-16">
+                    <h3 class="font-semibold text-lg text-merah mb-2">Help Center</h3>
+                    <h2 class="font-bold text-navy text-3xl mb-4 lg:text-5xl sm:text-4xl">Hubungi Kami</h2>
+                    <p class="font-thin text-md text-navy md:text-xl lg:text-xl">Jika anda memiliki pertanyaan terkait tentang alphastore anda bisa hubungi kami</p>
                 </div>
+                <form>
+                    <div class="w-full px-4 mb-8">
+                        <label for="name" class="text-base font-bold text-merah">Nama</label>
+                        <input type="text" id="name" class="w-full bg-navy/20 text-navy p-3 rounded-md focus:outline-none focus:ring-merah focus:ring-1 focus:border-merah">
+                        
+                    </div>
+                    <div class="w-full px-4 mb-8">
+                        <label for="email" class="text-base font-bold text-merah">Email</label>
+                        <input type="text" id="email" class="w-full bg-navy/20 text-navy p-3 rounded-md focus:outline-none focus:ring-merah focus:ring-1 focus:border-merah">
+                        
+                    </div>
+                    <div class="w-full px-4 mb-8">
+                        <label for="pertanyaan" class="text-base font-bold text-merah">Pertanyaan</label>
+                        <textarea type="text" id="pertanyaan" class="w-full bg-navy/20 text-navy p-3 rounded-md focus:outline-none focus:ring-merah focus:ring-1 focus:border-merah h-32"></textarea>
+                        
+                    </div>
+                    <div class="w-full">
+                        <button class="text-base font-semibold text-kuning bg-navy hover:text-putih hover:bg-merah py-3 px-8 rounded-full w-full">Kirim</button>
+                    </div>
+                </form>
             </div>
+
         </div>
     </section>
     <!-- Help End-->
+
+    <!-- Line Bawah-->
+    <section id="bottom" class="pt-5 pb-5 bg-navy">
+        <div align="center">
+            <h1 class="font-bold font-firacode text-xl text-kuning">Copyright © 2023 Alphastore</h1>
+        </div>
+    </section>
 
     <script src="./build/output/custom.js"></script>
 </body> 

@@ -48,8 +48,8 @@ module.exports = {
         },
       },
       animation:{
-        'fade-in-left': 'fade-in-left 2s ease-out',
-        'fade-in-rigth': 'fade-in-rigth 2s ease-out'
+        'fade-in-left': 'fade-in-left 2s ease-in-out',
+        'fade-in-rigth': 'fade-in-rigth 2s ease-in-out'
       }
     },
   },
