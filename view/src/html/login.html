@@ -5,8 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Sistem</title>
+    <link rel="stylesheet" href="../../build/output/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-<body>
-    BELOM ADA COK
+<body class="bg-putih">
+    <section id="login" class="pt-36 pb-32">
+        <div class="container">
+            <div class="flex flex-wrap font-firacode">
+                <div class="px-4 w-full">
+                    <h1 class="text-center text-navy font-bold text-xl lg:text-5xl md:text-2xl">Welcome To <span class="text-merah">Alphastore</span></h1>
+                    <form>
+                        <div class="w-full px-4 mt-8 mb-8">
+                            <label for="email" class="text-base font-bold text-merah">Email</label>
+                            <input type="email" id="email" class="w-full bg-navy/20 text-navy p-3 rounded-md focus:outline-none focus:ring-merah focus:ring-1 focus:border-merah">
+                        </div>
+                        <div class="w-full px-4 mt-8 mb-8">
+                            <label for="password" class="text-base font-bold text-merah">Password</label>
+                            <input type="password" id="password" class="w-full bg-navy/20 text-navy p-3 rounded-md focus:outline-none focus:ring-merah focus:ring-1 focus:border-merah">
+                        </div>
+                        <div class="w-full px-4">
+                            <button class="rounded-full py-2 px-8 bg-navy font-bold text-kuning hover:text-putih hover:bg-merah w-full">Login</button>
+                        </div>
+                    </form>
+                    <div class="px-4 w-full text-center mt-16 items-center">
+                        <div class="w-full mb-10">
+                            <a href="" class="rounded-full py-3 px-11 bg-navy font-bold text-kuning hover:text-putih hover:bg-merah">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512" width="20" class="inline-block fill-current"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>
+                                Login With Google</a>
+                        </div>
+                        <div class="w-full mb-10">
+                            <a href="" class="rounded-full py-3 px-8 bg-navy font-bold text-kuning hover:text-putih hover:bg-merah">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" class="fill-current inline-block"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+                                Login With Facebook</a>
+                        </div>
+                        <div class="w-full mb-10">
+                            <a href="" class="rounded-full py-3 px-11 bg-navy font-bold text-kuning hover:text-putih hover:bg-merah">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="fill-current inline-block" width="25"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M223.69,141.06,167,284.23,111,141.06H14.93L120.76,390.19,82.19,480h94.17L317.27,141.06Zm105.4,135.79a58.22,58.22,0,1,0,58.22,58.22A58.22,58.22,0,0,0,329.09,276.85ZM394.65,32l-93,223.47H406.44L499.07,32Z"/></svg>
+                                Login With Yahoo</a>
+                        </div>
+                        <div class="w-full">
+                            <h1 class="font-light text-navy text-lg lg:text-xl">Don't have account? <a href="../../index.html" class="text-twit underline">Sign Up</a></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
 </body>
 </html>
