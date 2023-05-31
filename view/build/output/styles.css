@@ -751,6 +751,14 @@ video {
   margin-top: 4rem;
 }
 
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
+.mt-6{
+  margin-top: 1.5rem;
+}
+
 .box-border{
   box-sizing: border-box;
 }
@@ -2094,6 +2102,10 @@ video {
   padding-top: 1.25rem;
 }
 
+.pt-40{
+  padding-top: 10rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -2926,5 +2938,12 @@ body {
     .dark\:lg\:hover\:\[paint-order\:markers\]:hover{
       paint-order: markers;
     }
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
