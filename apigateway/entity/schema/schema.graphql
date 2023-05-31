@@ -1,0 +1,24 @@
+type Book {
+    name: String!
+    price: Int!
+    stock: Int!
+    author: String!
+    examplar: Int!
+    sellerID: Int!
+    categoryID: Int!
+    seller: User!
+    category: Category!
+}
+
+type User {
+    name: String!
+    email: String
+    username: String!
+    password: String!
+}
+
+type Category {
+    name: String!
+    description: String!
+    book: [Book!]
+}
