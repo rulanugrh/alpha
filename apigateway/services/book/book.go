@@ -1,6 +1,8 @@
 package book
 
 import (
+	"bytes"
+	"encoding/json"
 	"net/http"
 
 	"github.com/rulanugrh/alpha/apigateway/entity/book"
@@ -42,7 +44,8 @@ func (bk *bookservices) GetCategory() (http.Response, error) {
 }
 
 func (bk *bookservices) PostBook(books book.BookModel) (http.Response, error) {
-	resp, err := http.NewRequest("POST", "http://localhost:3000/book", nil)
+	json_data, _ := json.Marshal(books)
+	resp, err := http.NewRequest("POST", "http://localhost:3000/book", bytes.NewBuffer(json_data))
 	if err != nil {
 		helper.PanicIfError(err)
 		return http.Response{
@@ -55,7 +58,8 @@ func (bk *bookservices) PostBook(books book.BookModel) (http.Response, error) {
 }
 
 func (bk *bookservices) PostCategory(category book.Category) (http.Response, error) {
-	resp, err := http.NewRequest("POST", "http://localhost:3000/category", nil)
+	json_data, _ := json.Marshal(category)
+	resp, err := http.NewRequest("POST", "http://localhost:3000/category", bytes.NewBuffer(json_data))
 	if err != nil {
 		helper.PanicIfError(err)
 		return http.Response{
@@ -102,7 +106,8 @@ func (bk *bookservices) GetCategoryId(id uint) (http.Response, error) {
 }
 
 func (bk *bookservices) UpdateBook(id uint, book book.BookModel) (http.Response, error) {
-	resp, err := http.NewRequest("POST", "http://localhost:3000/book/:id", nil)
+	json_data, _ := json.Marshal(book)
+	resp, err := http.NewRequest("PUT", "http://localhost:3000/book/:id", bytes.NewBuffer(json_data))
 	if err != nil {
 		helper.PanicIfError(err)
 		return http.Response{
