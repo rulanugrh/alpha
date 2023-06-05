@@ -1,0 +1,20 @@
+pipeline {
+    agent any {
+        stage('Test') {
+            steps {
+                sh 'echo "Welcome To Build"'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'docker-compose up -d'
+                sh 'main.sh'
+            }
+        }
+        stage('Destroy') {
+            steps{
+                sh 'docker-compose down --remove-orphans'
+            }
+        }
+    }
+}
