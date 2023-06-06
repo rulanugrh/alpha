@@ -1,0 +1,16 @@
+type OrderModel {
+    id: ID!
+    paid: Bool!
+    total: Int!
+    userid: Int!
+}
+
+type OrderItemModel {
+    id: ID!
+    quantity: Int!
+    orderid: Int!
+    bookid: Int!
+    price: Int!
+    subtotal: Int!
+    userid: Int!
+}

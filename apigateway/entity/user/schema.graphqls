@@ -1,0 +1,6 @@
+type UserModel {
+    name: String!
+    Email: String!
+    Username: String!
+    Password: String!
+}
