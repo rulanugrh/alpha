@@ -88,7 +88,7 @@ func (bk *bookcontroller) GetCategoryId(ctx echo.Context) error {
 	if err != nil {
 		response := web.ErrorResponse{
 			Code:   http.StatusBadRequest,
-			Status: "Cannot Get Book",
+			Status: "Cannot Get Category",
 			Error:  err,
 		}
 		return ctx.JSON(http.StatusBadRequest, response)
@@ -110,7 +110,7 @@ func (bk *bookcontroller) PostBook(ctx echo.Context) error {
 	if err != nil {
 		response := web.ErrorResponse{
 			Code:   http.StatusBadRequest,
-			Status: "Cannot Get Book",
+			Status: "Cannot Post Book",
 			Error:  err,
 		}
 		return ctx.JSON(http.StatusBadRequest, response)
@@ -132,7 +132,55 @@ func (bk *bookcontroller) PostCategory(ctx echo.Context) error {
 	if err != nil {
 		response := web.ErrorResponse{
 			Code:   http.StatusBadRequest,
-			Status: "Cannot Get Book",
+			Status: "Cannot Post Category",
+			Error:  err,
+		}
+		return ctx.JSON(http.StatusBadRequest, response)
+	}
+
+	response := web.SuccessResponse{
+		Code:   200,
+		Status: "Success Get Data",
+		Data:   resp.Body,
+	}
+
+	return ctx.JSON(200, response)
+}
+
+func (bk *bookcontroller) DeleteBookById(ctx echo.Context) error {
+	getId := ctx.Param("id")
+	id, _ := strconv.Atoi(getId)
+	resp, err := bk.books.DeleteBookId(uint(id))
+	if err != nil {
+		response := web.ErrorResponse{
+			Code:   http.StatusBadRequest,
+			Status: "Cannot Delete Book",
+			Error:  err,
+		}
+		return ctx.JSON(http.StatusBadRequest, response)
+	}
+
+	response := web.SuccessResponse{
+		Code:   200,
+		Status: "Success Get Data",
+		Data:   resp.Body,
+	}
+
+	return ctx.JSON(200, response)
+}
+
+func (bk *bookcontroller) UpdateBook(ctx echo.Context) error {
+	var book modelBook.BookModel
+	ctx.Bind(&book)
+
+	getId := ctx.Param("id")
+	id, _ := strconv.Atoi(getId)
+
+	resp, err := bk.books.UpdateBook(uint(id), book)
+	if err != nil {
+		response := web.ErrorResponse{
+			Code:   http.StatusBadRequest,
+			Status: "Cannot Update Book",
 			Error:  err,
 		}
 		return ctx.JSON(http.StatusBadRequest, response)

@@ -3,6 +3,7 @@ package book
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/rulanugrh/alpha/apigateway/entity/book"
@@ -75,7 +76,8 @@ func (bk *bookservices) GetBookById(id uint) (http.Response, error) {
 	books := book.BookModel{}
 	books.Id = id
 
-	resp, err := http.NewRequest("GET", "http://localhost:3000/book/:id", nil)
+	requesUrl := fmt.Sprintf("http://localhost:3000/book/%d", id)
+	resp, err := http.NewRequest("GET", requesUrl, nil)
 	if err != nil {
 		helper.PanicIfError(err)
 		return http.Response{
@@ -92,7 +94,8 @@ func (bk *bookservices) GetCategoryId(id uint) (http.Response, error) {
 	category := book.Category{}
 	category.Id = id
 
-	resp, err := http.NewRequest("GET", "http://localhost:3000/category/:id", nil)
+	requestUrl := fmt.Sprintf("http://localhost:3000/category/%d", id)
+	resp, err := http.NewRequest("GET", requestUrl, nil)
 	if err != nil {
 		helper.PanicIfError(err)
 		return http.Response{
@@ -107,7 +110,8 @@ func (bk *bookservices) GetCategoryId(id uint) (http.Response, error) {
 
 func (bk *bookservices) UpdateBook(id uint, book book.BookModel) (http.Response, error) {
 	json_data, _ := json.Marshal(book)
-	resp, err := http.NewRequest("PUT", "http://localhost:3000/book/:id", bytes.NewBuffer(json_data))
+	requestUrl := fmt.Sprintf("http://localhost:3000/book/%d", id)
+	resp, err := http.NewRequest("PUT", requestUrl, bytes.NewBuffer(json_data))
 	if err != nil {
 		helper.PanicIfError(err)
 		return http.Response{
@@ -123,7 +127,9 @@ func (bk *bookservices) DeleteBookId(id uint) (http.Response, error) {
 	books := book.BookModel{}
 	books.Id = id
 
-	resp, err := http.NewRequest("DELETE", "http://localhost:3000/book/:id", nil)
+	requestUrl := fmt.Sprintf("http://localhost:3000/book/%d", id)
+
+	resp, err := http.NewRequest("DELETE", requestUrl, nil)
 	if err != nil {
 		helper.PanicIfError(err)
 		return http.Response{
