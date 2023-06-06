@@ -1,6 +1,7 @@
 package order
 
 type OrderModel struct {
+	Id    uint `json:"id" form:"id"`
 	Paid  bool `json:"is_paid" form:"is_paid"`
 	Total int  `json:"grand_total" form:"grand_total"`
 	// OrderAt string `json:"order_at" form:"order_at"`
@@ -8,6 +9,7 @@ type OrderModel struct {
 }
 
 type OrderItemModel struct {
+	Id       uint `json:"id" form:"id"`
 	Quantity int  `json:"quantity" form:"quantity"`
 	OrderID  uint `json:"order_id" form:"order_id"`
 	BookID   uint `json:"book_id" form:"book_id"`

@@ -1,7 +1,7 @@
 package book
 
 type BookModel struct {
-	Id         uint
+	Id         uint   `json:"id" form:"id"`
 	Name       string `json:"name" form:"name"`
 	Price      int    `json:"price" form:"price"`
 	Stock      int    `json:"stock_quantity" form:"stock_quantity"`
@@ -12,7 +12,7 @@ type BookModel struct {
 }
 
 type Category struct {
-	Id          uint
+	Id          uint   `json:"id" form:"id"`
 	Name        string `json:"name" form:"name" validate:"required"`
 	Description string `json:"description" name:"description"`
 }

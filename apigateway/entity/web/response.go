@@ -1,13 +1,13 @@
 package web
 
 type ErrorResponse struct {
-	Code   int
-	Status string
-	Error  error
+	Code   int    `json:"code"`
+	Status string `json:"status"`
+	Error  error  `json:"error"`
 }
 
 type SuccessResponse struct {
-	Code   int
-	Status string
-	Data   interface{}
+	Code   int         `json:"code"`
+	Status string      `json:"status"`
+	Data   interface{} `json:"data"`
 }
