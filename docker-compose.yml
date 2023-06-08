@@ -56,10 +56,9 @@ services:
   db-services:
     container_name: db-book
     image: mysql
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d
     environment:
-      - MYSQL_DATABASE=${MYSQL_BOOK_NAME}
-      - MYSQL_DATABASE=${MYSQL_ORDER_NAME}
-      - MYSQL_DATABASE=${MYSQL_USER_NAME}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASS=${MYSQL_PASS}
     ports:
