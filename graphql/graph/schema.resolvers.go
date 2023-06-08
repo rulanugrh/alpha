@@ -11,6 +11,7 @@ import (
 	"github.com/rulanugrh/graphql/graph/model"
 	"github.com/rulanugrh/graphql/helper"
 	bookServ "github.com/rulanugrh/graphql/services/book"
+	orderServ "github.com/rulanugrh/graphql/services/order"
 	userServ "github.com/rulanugrh/graphql/services/user"
 )
 
@@ -34,7 +35,19 @@ func (r *mutationResolver) CreateUser(ctx context.Context, name *string, email *
 
 // CreateOrder is the resolver for the createOrder field.
 func (r *mutationResolver) CreateOrder(ctx context.Context, id *int, paid *bool, total *int, userID *int) (*model.Order, error) {
-	panic(fmt.Errorf("not implemented: CreateOrder - createOrder"))
+	order := model.Order{
+		ID:     id,
+		Paid:   paid,
+		Total:  total,
+		Userid: userID,
+	}
+
+	orders, err := orderServ.NewOrderSercives().Create(order)
+	if err != nil {
+		return nil, err
+	}
+
+	return orders, nil
 }
 
 // CreateBook is the resolver for the createBook field.
@@ -106,12 +119,22 @@ func (r *queryResolver) Categoryfindid(ctx context.Context, id *string) (*model.
 
 // Findorder is the resolver for the findorder field.
 func (r *queryResolver) Findorder(ctx context.Context, id *string) (*model.Order, error) {
-	panic(fmt.Errorf("not implemented: Findorder - findorder"))
+	order, err := orderServ.NewOrderSercives().FindId(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return order, nil
 }
 
 // Listnotpaid is the resolver for the listnotpaid field.
 func (r *queryResolver) Listnotpaid(ctx context.Context, id *string) (*model.Order, error) {
-	panic(fmt.Errorf("not implemented: Listnotpaid - listnotpaid"))
+	order, err := orderServ.NewOrderSercives().ListNotPaid(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return order, nil
 }
 
 // Deletebookid is the resolver for the deletebookid field.
@@ -126,12 +149,22 @@ func (r *queryResolver) Deletebookid(ctx context.Context, id *string) (*model.Bo
 
 // Findallorder is the resolver for the findallorder field.
 func (r *queryResolver) Findallorder(ctx context.Context, id *string) (*model.Order, error) {
-	panic(fmt.Errorf("not implemented: Findallorder - findallorder"))
+	order, err := orderServ.NewOrderSercives().FindAll(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return order, nil
 }
 
 // Listcart is the resolver for the listcart field.
 func (r *queryResolver) Listcart(ctx context.Context, userID *string) (*model.OrderItem, error) {
-	panic(fmt.Errorf("not implemented: Listcart - listcart"))
+	order, err := orderServ.NewOrderSercives().ListCart(userID)
+	if err != nil {
+		return nil, err
+	}
+
+	return order, nil
 }
 
 // Getallbook is the resolver for the getallbook field.

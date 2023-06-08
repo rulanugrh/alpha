@@ -1,18 +1,16 @@
 package order
 
 import (
-	"net/http"
-
 	"github.com/rulanugrh/graphql/graph/model"
 )
 
 type OrderInterfaces interface {
-	Create(order model.Order) (http.Response, error)
-	FindId(id *int) (http.Response, error)
-	FindAll(id *int) (http.Response, error)
-	AddCart(order model.OrderItem) (http.Response, error)
-	Checkout(id *int, order model.Order) (http.Response, error)
-	ListCart(userId *int) (http.Response, error)
-	DeleteCart(id *int) (http.Response, error)
-	ListNotPaid(id *int) (http.Response, error)
+	Create(order model.Order) (*model.Order, error)
+	FindId(id *string) (*model.Order, error)
+	FindAll(id *string) (*model.Order, error)
+	AddCart(order model.OrderItem) (*model.OrderItem, error)
+	Checkout(id *string, order model.Order) (*model.Order, error)
+	ListCart(userId *string) (*model.OrderItem, error)
+	DeleteCart(id *string) (*model.Order, error)
+	ListNotPaid(id *string) (*model.Order, error)
 }
