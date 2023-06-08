@@ -2,7 +2,6 @@
 
 set -Eou pipefail
 
-RESULT=$1?
 deployApp(){
     kubectl apply -f books-config-k8s.yaml
     kubectl apply -f mysql-book-config.yml
@@ -13,7 +12,9 @@ deployApp(){
 }
 
 main() {
-    deployApp
+    res=$deployApp
+    RESULT=$res?
+    
     if [ $RESULT == 0 ];
     then
         echo "success"
