@@ -3,42 +3,42 @@
 package model
 
 type Book struct {
-	ID         string `json:"id"`
-	Name       string `json:"name"`
-	Price      int    `json:"price"`
-	Stock      int    `json:"stock"`
-	Author     string `json:"author"`
-	Examplar   int    `json:"examplar"`
-	Sellerid   int    `json:"sellerid"`
-	Categoryid int    `json:"categoryid"`
+	ID         *int    `json:"id,omitempty"`
+	Name       *string `json:"name,omitempty"`
+	Price      *int    `json:"price,omitempty"`
+	Stock      *int    `json:"stock,omitempty"`
+	Author     *string `json:"author,omitempty"`
+	Examplar   *int    `json:"examplar,omitempty"`
+	Sellerid   *int    `json:"sellerid,omitempty"`
+	Categoryid *int    `json:"categoryid,omitempty"`
 }
 
 type Category struct {
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
+	ID          *int    `json:"id,omitempty"`
+	Name        *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 type Order struct {
-	ID     string `json:"id"`
-	Paid   bool   `json:"paid"`
-	Total  int    `json:"total"`
-	Userid int    `json:"userid"`
+	ID     *int  `json:"id,omitempty"`
+	Paid   *bool `json:"paid,omitempty"`
+	Total  *int  `json:"total,omitempty"`
+	Userid *int  `json:"userid,omitempty"`
 }
 
 type OrderItem struct {
-	ID       string `json:"id"`
-	Quantity int    `json:"quantity"`
-	Orderid  int    `json:"orderid"`
-	Bookid   int    `json:"bookid"`
-	Price    int    `json:"price"`
-	Subtotal int    `json:"subtotal"`
-	Userid   int    `json:"userid"`
+	ID       *int `json:"id,omitempty"`
+	Quantity *int `json:"quantity,omitempty"`
+	Orderid  *int `json:"orderid,omitempty"`
+	Bookid   *int `json:"bookid,omitempty"`
+	Price    *int `json:"price,omitempty"`
+	Subtotal *int `json:"subtotal,omitempty"`
+	Userid   *int `json:"userid,omitempty"`
 }
 
 type User struct {
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Name     *string `json:"name,omitempty"`
+	Email    *string `json:"email,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
 }

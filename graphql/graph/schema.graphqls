@@ -3,53 +3,61 @@
 # https://gqlgen.com/getting-started/
 
 type Book {
-    id: ID!
-    name: String!
-    price: Int!
-    stock: Int!
-    author: String!
-    examplar: Int!
-    sellerid: Int!
-    categoryid: Int!
+    id: Int
+    name: String
+    price: Int
+    stock: Int
+    author: String
+    examplar: Int
+    sellerid: Int
+    categoryid: Int
 }
 
 type Category {
-    id: ID!
-    name: String!
-    description: String!
+    id: Int
+    name: String
+    description: String
 }
 type Order {
-    id: ID!
-    paid: Boolean!
-    total: Int!
-    userid: Int!
+    id: Int
+    paid: Boolean
+    total: Int
+    userid: Int
 }
 
 type OrderItem {
-    id: ID!
-    quantity: Int!
-    orderid: Int!
-    bookid: Int!
-    price: Int!
-    subtotal: Int!
-    userid: Int!
+    id: Int
+    quantity: Int
+    orderid: Int
+    bookid: Int
+    price: Int
+    subtotal: Int
+    userid: Int
 }
 
 type User {
-    name: String!
-    email: String!
-    username: String!
-    password: String!
+    name: String
+    email: String
+    username: String
+    password: String
 }
 
 type Query {
-  user: [User!]!
-  order: [Order!]!
-  book: [Book!]!
+    finduser(id: ID):User
+    bookfindid(id: ID):Book
+    categoryfindid(id: ID):Category
+    findorder(id: ID):Order
+    listnotpaid(id: ID):Order
+    deletebookid(id: ID):Book
+    findallorder(id: ID):Order
+    listcart(userID: ID):OrderItem
+    getallbook:[Book]
+    getallcategory:[Category]
 }
 
 type Mutation {
-  createUser(input: User!): User!
-  createOrder(input: Order!): Order!
-  createBook(input: Book!): Book!
+    createUser(name: String, email: String, username: String, password: String):User
+    createOrder(id: Int, paid: Boolean, total: Int, userId: Int):Order
+    createBook(id: Int, name: String, price: Int, stock: Int, author: String, examplar: Int, sellerid: Int, categoryid: Int):Book
+    creaeteCategory(id: Int, name: String, description: String):Category
 }
