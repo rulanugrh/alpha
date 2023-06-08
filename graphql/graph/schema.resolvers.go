@@ -9,6 +9,9 @@ import (
 	"fmt"
 
 	"github.com/rulanugrh/graphql/graph/model"
+	"github.com/rulanugrh/graphql/helper"
+	bookServ "github.com/rulanugrh/graphql/services/book"
+	userServ "github.com/rulanugrh/graphql/services/user"
 )
 
 // CreateUser is the resolver for the createUser field.
@@ -20,7 +23,13 @@ func (r *mutationResolver) CreateUser(ctx context.Context, name *string, email *
 		Password: password,
 	}
 
-	return &user, nil
+	resp, err := userServ.NewUserServices().Register(user)
+	if err != nil {
+		helper.PanicIfError(err)
+		return nil, err
+	}
+
+	return resp, nil
 }
 
 // CreateOrder is the resolver for the createOrder field.
@@ -30,27 +39,69 @@ func (r *mutationResolver) CreateOrder(ctx context.Context, id *int, paid *bool,
 
 // CreateBook is the resolver for the createBook field.
 func (r *mutationResolver) CreateBook(ctx context.Context, id *int, name *string, price *int, stock *int, author *string, examplar *int, sellerid *int, categoryid *int) (*model.Book, error) {
-	panic(fmt.Errorf("not implemented: CreateBook - createBook"))
+	book := model.Book{
+		ID:         id,
+		Name:       name,
+		Price:      price,
+		Stock:      stock,
+		Author:     author,
+		Examplar:   examplar,
+		Sellerid:   sellerid,
+		Categoryid: categoryid,
+	}
+
+	books, err := bookServ.NewBookServices().PostBook(book)
+	if err != nil {
+		return nil, err
+	}
+
+	return books, nil
 }
 
 // CreaeteCategory is the resolver for the creaeteCategory field.
 func (r *mutationResolver) CreaeteCategory(ctx context.Context, id *int, name *string, description *string) (*model.Category, error) {
-	panic(fmt.Errorf("not implemented: CreaeteCategory - creaeteCategory"))
+	category := model.Category{
+		ID:          id,
+		Name:        name,
+		Description: description,
+	}
+
+	categori, err := bookServ.NewBookServices().PostCategory(category)
+	if err != nil {
+		return nil, err
+	}
+
+	return categori, nil
 }
 
 // Finduser is the resolver for the finduser field.
 func (r *queryResolver) Finduser(ctx context.Context, id *string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: Finduser - finduser"))
+	user, err := userServ.NewUserServices().Detail(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return user, nil
 }
 
 // Bookfindid is the resolver for the bookfindid field.
 func (r *queryResolver) Bookfindid(ctx context.Context, id *string) (*model.Book, error) {
-	panic(fmt.Errorf("not implemented: Bookfindid - bookfindid"))
+	books, err := bookServ.NewBookServices().GetBookById(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return books, err
 }
 
 // Categoryfindid is the resolver for the categoryfindid field.
 func (r *queryResolver) Categoryfindid(ctx context.Context, id *string) (*model.Category, error) {
-	panic(fmt.Errorf("not implemented: Categoryfindid - categoryfindid"))
+	category, err := bookServ.NewBookServices().GetCategoryId(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return category, nil
 }
 
 // Findorder is the resolver for the findorder field.
@@ -65,7 +116,12 @@ func (r *queryResolver) Listnotpaid(ctx context.Context, id *string) (*model.Ord
 
 // Deletebookid is the resolver for the deletebookid field.
 func (r *queryResolver) Deletebookid(ctx context.Context, id *string) (*model.Book, error) {
-	panic(fmt.Errorf("not implemented: Deletebookid - deletebookid"))
+	book, err := bookServ.NewBookServices().DeleteBookId(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return book, err
 }
 
 // Findallorder is the resolver for the findallorder field.
@@ -80,12 +136,22 @@ func (r *queryResolver) Listcart(ctx context.Context, userID *string) (*model.Or
 
 // Getallbook is the resolver for the getallbook field.
 func (r *queryResolver) Getallbook(ctx context.Context) ([]*model.Book, error) {
-	panic(fmt.Errorf("not implemented: Getallbook - getallbook"))
+	books, err := bookServ.NewBookServices().GetBook()
+	if err != nil {
+		return nil, err
+	}
+
+	return books, nil
 }
 
 // Getallcategory is the resolver for the getallcategory field.
 func (r *queryResolver) Getallcategory(ctx context.Context) ([]*model.Category, error) {
-	panic(fmt.Errorf("not implemented: Getallcategory - getallcategory"))
+	categories, err := bookServ.NewBookServices().GetCategory()
+	if err != nil {
+		return nil, err
+	}
+
+	return categories, nil
 }
 
 // Mutation returns MutationResolver implementation.

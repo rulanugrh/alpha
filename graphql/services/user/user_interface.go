@@ -1,13 +1,11 @@
 package user
 
 import (
-	"net/http"
-
 	"github.com/rulanugrh/graphql/graph/model"
 )
 
 type UserService interface {
-	Register(user model.User) (http.Response, error)
-	Login(user model.User) (http.Response, error)
-	Detail(id *int) (http.Response, error)
+	Register(user model.User) (*model.User, error)
+	Login(user model.User) (*model.User, error)
+	Detail(id *string) (*model.User, error)
 }
