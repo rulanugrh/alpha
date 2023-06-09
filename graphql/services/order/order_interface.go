@@ -5,12 +5,12 @@ import (
 )
 
 type OrderInterfaces interface {
-	Create(order model.Order) (*model.Order, error)
-	FindId(id *string) (*model.Order, error)
-	FindAll(id *string) (*model.Order, error)
-	AddCart(order model.OrderItem) (*model.OrderItem, error)
-	Checkout(id *string, order model.Order) (*model.Order, error)
-	ListCart(userId *string) (*model.OrderItem, error)
-	DeleteCart(id *string) (*model.Order, error)
-	ListNotPaid(id *string) (*model.Order, error)
+	Create(order model.Order) (*model.Response, error)
+	FindId(id *string) (*model.Response, error)
+	FindAll(id *string) (*model.Response, error)
+	AddCart(order model.OrderItem) (*model.Response, error)
+	Checkout(id *string, order model.Order) (*model.Response, error)
+	ListCart(userId *string) (*model.Response, error)
+	DeleteCart(id *string) (*model.Response, error)
+	ListNotPaid(id *string) (*model.Response, error)
 }

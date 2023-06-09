@@ -36,6 +36,10 @@ type OrderItem struct {
 	Userid   *int `json:"userid,omitempty"`
 }
 
+type Response struct {
+	Data *string `json:"data,omitempty"`
+}
+
 type User struct {
 	Name     *string `json:"name,omitempty"`
 	Email    *string `json:"email,omitempty"`

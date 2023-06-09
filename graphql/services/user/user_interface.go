@@ -5,7 +5,7 @@ import (
 )
 
 type UserService interface {
-	Register(user model.User) (*model.User, error)
-	Login(user model.User) (*model.User, error)
-	Detail(id *string) (*model.User, error)
+	Register(user model.User) (*model.Response, error)
+	Login(user model.User) (*model.Response, error)
+	Detail(id *string) (*model.Response, error)
 }

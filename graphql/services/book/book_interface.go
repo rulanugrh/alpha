@@ -5,12 +5,12 @@ import (
 )
 
 type BookInterface interface {
-	GetCategory() ([]*model.Category, error)
-	PostCategory(category model.Category) (*model.Category, error)
-	GetCategoryId(id *string) (*model.Category, error)
-	GetBook() ([]*model.Book, error)
-	PostBook(books model.Book) (*model.Book, error)
-	DeleteBookId(id *string) (*model.Book, error)
-	UpdateBook(id *string, books model.Book) (*model.Book, error)
-	GetBookById(id *string) (*model.Book, error)
+	GetCategory() (*model.Response, error)
+	PostCategory(category model.Category) (*model.Response, error)
+	GetCategoryId(id *string) (*model.Response, error)
+	GetBook() (*model.Response, error)
+	PostBook(books model.Book) (*model.Response, error)
+	DeleteBookId(id *string) (*model.Response, error)
+	UpdateBook(id *string, books model.Book) (*model.Response, error)
+	GetBookById(id *string) (*model.Response, error)
 }

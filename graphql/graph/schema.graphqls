@@ -42,22 +42,26 @@ type User {
     password: String
 }
 
+type Response {
+    data: String
+}
+
 type Query {
-    finduser(id: ID):User
-    bookfindid(id: ID):Book
-    categoryfindid(id: ID):Category
-    findorder(id: ID):Order
-    listnotpaid(id: ID):Order
-    deletebookid(id: ID):Book
-    findallorder(id: ID):Order
-    listcart(userID: ID):OrderItem
-    getallbook:[Book]
-    getallcategory:[Category]
+    finduser(id: ID):Response
+    bookfindid(id: ID):Response
+    categoryfindid(id: ID):Response
+    findorder(id: ID):Response
+    listnotpaid(id: ID):Response
+    deletebookid(id: ID):Response
+    findallorder(id: ID):Response
+    listcart(userID: ID):Response
+    getallbook:Response
+    getallcategory:Response
 }
 
 type Mutation {
-    createUser(name: String, email: String, username: String, password: String):User
-    createOrder(id: Int, paid: Boolean, total: Int, userId: Int):Order
-    createBook(id: Int, name: String, price: Int, stock: Int, author: String, examplar: Int, sellerid: Int, categoryid: Int):Book
-    creaeteCategory(id: Int, name: String, description: String):Category
+    createUser(name: String, email: String, username: String, password: String):Response
+    createOrder(id: Int, paid: Boolean, total: Int, userId: Int):Response
+    createBook(id: Int, name: String, price: Int, stock: Int, author: String, examplar: Int, sellerid: Int, categoryid: Int):Response
+    creaeteCategory(id: Int, name: String, description: String):Response
 }

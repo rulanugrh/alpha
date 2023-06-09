@@ -99,6 +99,10 @@ type ComplexityRoot struct {
 		Listnotpaid    func(childComplexity int, id *string) int
 	}
 
+	Response struct {
+		Data func(childComplexity int) int
+	}
+
 	User struct {
 		Email    func(childComplexity int) int
 		Name     func(childComplexity int) int
@@ -108,22 +112,22 @@ type ComplexityRoot struct {
 }
 
 type MutationResolver interface {
-	CreateUser(ctx context.Context, name *string, email *string, username *string, password *string) (*model.User, error)
-	CreateOrder(ctx context.Context, id *int, paid *bool, total *int, userID *int) (*model.Order, error)
-	CreateBook(ctx context.Context, id *int, name *string, price *int, stock *int, author *string, examplar *int, sellerid *int, categoryid *int) (*model.Book, error)
-	CreaeteCategory(ctx context.Context, id *int, name *string, description *string) (*model.Category, error)
+	CreateUser(ctx context.Context, name *string, email *string, username *string, password *string) (*model.Response, error)
+	CreateOrder(ctx context.Context, id *int, paid *bool, total *int, userID *int) (*model.Response, error)
+	CreateBook(ctx context.Context, id *int, name *string, price *int, stock *int, author *string, examplar *int, sellerid *int, categoryid *int) (*model.Response, error)
+	CreaeteCategory(ctx context.Context, id *int, name *string, description *string) (*model.Response, error)
 }
 type QueryResolver interface {
-	Finduser(ctx context.Context, id *string) (*model.User, error)
-	Bookfindid(ctx context.Context, id *string) (*model.Book, error)
-	Categoryfindid(ctx context.Context, id *string) (*model.Category, error)
-	Findorder(ctx context.Context, id *string) (*model.Order, error)
-	Listnotpaid(ctx context.Context, id *string) (*model.Order, error)
-	Deletebookid(ctx context.Context, id *string) (*model.Book, error)
-	Findallorder(ctx context.Context, id *string) (*model.Order, error)
-	Listcart(ctx context.Context, userID *string) (*model.OrderItem, error)
-	Getallbook(ctx context.Context) ([]*model.Book, error)
-	Getallcategory(ctx context.Context) ([]*model.Category, error)
+	Finduser(ctx context.Context, id *string) (*model.Response, error)
+	Bookfindid(ctx context.Context, id *string) (*model.Response, error)
+	Categoryfindid(ctx context.Context, id *string) (*model.Response, error)
+	Findorder(ctx context.Context, id *string) (*model.Response, error)
+	Listnotpaid(ctx context.Context, id *string) (*model.Response, error)
+	Deletebookid(ctx context.Context, id *string) (*model.Response, error)
+	Findallorder(ctx context.Context, id *string) (*model.Response, error)
+	Listcart(ctx context.Context, userID *string) (*model.Response, error)
+	Getallbook(ctx context.Context) (*model.Response, error)
+	Getallcategory(ctx context.Context) (*model.Response, error)
 }
 
 type executableSchema struct {
@@ -452,6 +456,13 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 		}
 
 		return e.complexity.Query.Listnotpaid(childComplexity, args["id"].(*string)), true
+
+	case "Response.data":
+		if e.complexity.Response.Data == nil {
+			break
+		}
+
+		return e.complexity.Response.Data(childComplexity), true
 
 	case "User.email":
 		if e.complexity.User.Email == nil {
@@ -1446,9 +1457,9 @@ func (ec *executionContext) _Mutation_createUser(ctx context.Context, field grap
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.User)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOUser2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createUser(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1459,16 +1470,10 @@ func (ec *executionContext) fieldContext_Mutation_createUser(ctx context.Context
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "name":
-				return ec.fieldContext_User_name(ctx, field)
-			case "email":
-				return ec.fieldContext_User_email(ctx, field)
-			case "username":
-				return ec.fieldContext_User_username(ctx, field)
-			case "password":
-				return ec.fieldContext_User_password(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type User", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -1508,9 +1513,9 @@ func (ec *executionContext) _Mutation_createOrder(ctx context.Context, field gra
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Order)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOOrder2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐOrder(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createOrder(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1521,16 +1526,10 @@ func (ec *executionContext) fieldContext_Mutation_createOrder(ctx context.Contex
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Order_id(ctx, field)
-			case "paid":
-				return ec.fieldContext_Order_paid(ctx, field)
-			case "total":
-				return ec.fieldContext_Order_total(ctx, field)
-			case "userid":
-				return ec.fieldContext_Order_userid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Order", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -1570,9 +1569,9 @@ func (ec *executionContext) _Mutation_createBook(ctx context.Context, field grap
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Book)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOBook2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐBook(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createBook(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1583,24 +1582,10 @@ func (ec *executionContext) fieldContext_Mutation_createBook(ctx context.Context
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Book_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Book_name(ctx, field)
-			case "price":
-				return ec.fieldContext_Book_price(ctx, field)
-			case "stock":
-				return ec.fieldContext_Book_stock(ctx, field)
-			case "author":
-				return ec.fieldContext_Book_author(ctx, field)
-			case "examplar":
-				return ec.fieldContext_Book_examplar(ctx, field)
-			case "sellerid":
-				return ec.fieldContext_Book_sellerid(ctx, field)
-			case "categoryid":
-				return ec.fieldContext_Book_categoryid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Book", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -1640,9 +1625,9 @@ func (ec *executionContext) _Mutation_creaeteCategory(ctx context.Context, field
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Category)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOCategory2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_creaeteCategory(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1653,14 +1638,10 @@ func (ec *executionContext) fieldContext_Mutation_creaeteCategory(ctx context.Co
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Category_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Category_name(ctx, field)
-			case "description":
-				return ec.fieldContext_Category_description(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Category", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2151,9 +2132,9 @@ func (ec *executionContext) _Query_finduser(ctx context.Context, field graphql.C
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.User)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOUser2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_finduser(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2164,16 +2145,10 @@ func (ec *executionContext) fieldContext_Query_finduser(ctx context.Context, fie
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "name":
-				return ec.fieldContext_User_name(ctx, field)
-			case "email":
-				return ec.fieldContext_User_email(ctx, field)
-			case "username":
-				return ec.fieldContext_User_username(ctx, field)
-			case "password":
-				return ec.fieldContext_User_password(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type User", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2213,9 +2188,9 @@ func (ec *executionContext) _Query_bookfindid(ctx context.Context, field graphql
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Book)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOBook2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐBook(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_bookfindid(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2226,24 +2201,10 @@ func (ec *executionContext) fieldContext_Query_bookfindid(ctx context.Context, f
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Book_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Book_name(ctx, field)
-			case "price":
-				return ec.fieldContext_Book_price(ctx, field)
-			case "stock":
-				return ec.fieldContext_Book_stock(ctx, field)
-			case "author":
-				return ec.fieldContext_Book_author(ctx, field)
-			case "examplar":
-				return ec.fieldContext_Book_examplar(ctx, field)
-			case "sellerid":
-				return ec.fieldContext_Book_sellerid(ctx, field)
-			case "categoryid":
-				return ec.fieldContext_Book_categoryid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Book", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2283,9 +2244,9 @@ func (ec *executionContext) _Query_categoryfindid(ctx context.Context, field gra
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Category)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOCategory2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_categoryfindid(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2296,14 +2257,10 @@ func (ec *executionContext) fieldContext_Query_categoryfindid(ctx context.Contex
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Category_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Category_name(ctx, field)
-			case "description":
-				return ec.fieldContext_Category_description(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Category", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2343,9 +2300,9 @@ func (ec *executionContext) _Query_findorder(ctx context.Context, field graphql.
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Order)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOOrder2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐOrder(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_findorder(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2356,16 +2313,10 @@ func (ec *executionContext) fieldContext_Query_findorder(ctx context.Context, fi
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Order_id(ctx, field)
-			case "paid":
-				return ec.fieldContext_Order_paid(ctx, field)
-			case "total":
-				return ec.fieldContext_Order_total(ctx, field)
-			case "userid":
-				return ec.fieldContext_Order_userid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Order", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2405,9 +2356,9 @@ func (ec *executionContext) _Query_listnotpaid(ctx context.Context, field graphq
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Order)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOOrder2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐOrder(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_listnotpaid(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2418,16 +2369,10 @@ func (ec *executionContext) fieldContext_Query_listnotpaid(ctx context.Context, 
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Order_id(ctx, field)
-			case "paid":
-				return ec.fieldContext_Order_paid(ctx, field)
-			case "total":
-				return ec.fieldContext_Order_total(ctx, field)
-			case "userid":
-				return ec.fieldContext_Order_userid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Order", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2467,9 +2412,9 @@ func (ec *executionContext) _Query_deletebookid(ctx context.Context, field graph
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Book)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOBook2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐBook(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_deletebookid(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2480,24 +2425,10 @@ func (ec *executionContext) fieldContext_Query_deletebookid(ctx context.Context,
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Book_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Book_name(ctx, field)
-			case "price":
-				return ec.fieldContext_Book_price(ctx, field)
-			case "stock":
-				return ec.fieldContext_Book_stock(ctx, field)
-			case "author":
-				return ec.fieldContext_Book_author(ctx, field)
-			case "examplar":
-				return ec.fieldContext_Book_examplar(ctx, field)
-			case "sellerid":
-				return ec.fieldContext_Book_sellerid(ctx, field)
-			case "categoryid":
-				return ec.fieldContext_Book_categoryid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Book", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2537,9 +2468,9 @@ func (ec *executionContext) _Query_findallorder(ctx context.Context, field graph
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.Order)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOOrder2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐOrder(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_findallorder(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2550,16 +2481,10 @@ func (ec *executionContext) fieldContext_Query_findallorder(ctx context.Context,
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Order_id(ctx, field)
-			case "paid":
-				return ec.fieldContext_Order_paid(ctx, field)
-			case "total":
-				return ec.fieldContext_Order_total(ctx, field)
-			case "userid":
-				return ec.fieldContext_Order_userid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Order", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2599,9 +2524,9 @@ func (ec *executionContext) _Query_listcart(ctx context.Context, field graphql.C
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*model.OrderItem)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOOrderItem2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐOrderItem(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_listcart(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2612,22 +2537,10 @@ func (ec *executionContext) fieldContext_Query_listcart(ctx context.Context, fie
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_OrderItem_id(ctx, field)
-			case "quantity":
-				return ec.fieldContext_OrderItem_quantity(ctx, field)
-			case "orderid":
-				return ec.fieldContext_OrderItem_orderid(ctx, field)
-			case "bookid":
-				return ec.fieldContext_OrderItem_bookid(ctx, field)
-			case "price":
-				return ec.fieldContext_OrderItem_price(ctx, field)
-			case "subtotal":
-				return ec.fieldContext_OrderItem_subtotal(ctx, field)
-			case "userid":
-				return ec.fieldContext_OrderItem_userid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type OrderItem", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	defer func() {
@@ -2667,9 +2580,9 @@ func (ec *executionContext) _Query_getallbook(ctx context.Context, field graphql
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.([]*model.Book)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOBook2ᚕᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐBook(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_getallbook(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2680,24 +2593,10 @@ func (ec *executionContext) fieldContext_Query_getallbook(ctx context.Context, f
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Book_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Book_name(ctx, field)
-			case "price":
-				return ec.fieldContext_Book_price(ctx, field)
-			case "stock":
-				return ec.fieldContext_Book_stock(ctx, field)
-			case "author":
-				return ec.fieldContext_Book_author(ctx, field)
-			case "examplar":
-				return ec.fieldContext_Book_examplar(ctx, field)
-			case "sellerid":
-				return ec.fieldContext_Book_sellerid(ctx, field)
-			case "categoryid":
-				return ec.fieldContext_Book_categoryid(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Book", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	return fc, nil
@@ -2726,9 +2625,9 @@ func (ec *executionContext) _Query_getallcategory(ctx context.Context, field gra
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.([]*model.Category)
+	res := resTmp.(*model.Response)
 	fc.Result = res
-	return ec.marshalOCategory2ᚕᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_getallcategory(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2739,14 +2638,10 @@ func (ec *executionContext) fieldContext_Query_getallcategory(ctx context.Contex
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "id":
-				return ec.fieldContext_Category_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Category_name(ctx, field)
-			case "description":
-				return ec.fieldContext_Category_description(ctx, field)
+			case "data":
+				return ec.fieldContext_Response_data(ctx, field)
 			}
-			return nil, fmt.Errorf("no field named %q was found under type Category", field.Name)
+			return nil, fmt.Errorf("no field named %q was found under type Response", field.Name)
 		},
 	}
 	return fc, nil
@@ -2876,6 +2771,47 @@ func (ec *executionContext) fieldContext_Query___schema(ctx context.Context, fie
 				return ec.fieldContext___Schema_directives(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type __Schema", field.Name)
+		},
+	}
+	return fc, nil
+}
+
+func (ec *executionContext) _Response_data(ctx context.Context, field graphql.CollectedField, obj *model.Response) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Response_data(ctx, field)
+	if err != nil {
+		return graphql.Null
+	}
+	ctx = graphql.WithFieldContext(ctx, fc)
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Data, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		return graphql.Null
+	}
+	res := resTmp.(*string)
+	fc.Result = res
+	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) fieldContext_Response_data(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+	fc = &graphql.FieldContext{
+		Object:     "Response",
+		Field:      field,
+		IsMethod:   false,
+		IsResolver: false,
+		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
+			return nil, errors.New("field of type String does not have child fields")
 		},
 	}
 	return fc, nil
@@ -5304,6 +5240,42 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 	return out
 }
 
+var responseImplementors = []string{"Response"}
+
+func (ec *executionContext) _Response(ctx context.Context, sel ast.SelectionSet, obj *model.Response) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, responseImplementors)
+
+	out := graphql.NewFieldSet(fields)
+	deferred := make(map[string]*graphql.FieldSet)
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("Response")
+		case "data":
+			out.Values[i] = ec._Response_data(ctx, field, obj)
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch(ctx)
+	if out.Invalids > 0 {
+		return graphql.Null
+	}
+
+	atomic.AddInt32(&ec.deferred, int32(len(deferred)))
+
+	for label, dfs := range deferred {
+		ec.processDeferredGroup(graphql.DeferredGroup{
+			Label:    label,
+			Path:     graphql.GetPath(ctx),
+			FieldSet: dfs,
+			Context:  ctx,
+		})
+	}
+
+	return out
+}
+
 var userImplementors = []string{"User"}
 
 func (ec *executionContext) _User(ctx context.Context, sel ast.SelectionSet, obj *model.User) graphql.Marshaler {
@@ -5955,54 +5927,6 @@ func (ec *executionContext) marshalN__TypeKind2string(ctx context.Context, sel a
 	return res
 }
 
-func (ec *executionContext) marshalOBook2ᚕᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐBook(ctx context.Context, sel ast.SelectionSet, v []*model.Book) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	ret := make(graphql.Array, len(v))
-	var wg sync.WaitGroup
-	isLen1 := len(v) == 1
-	if !isLen1 {
-		wg.Add(len(v))
-	}
-	for i := range v {
-		i := i
-		fc := &graphql.FieldContext{
-			Index:  &i,
-			Result: &v[i],
-		}
-		ctx := graphql.WithFieldContext(ctx, fc)
-		f := func(i int) {
-			defer func() {
-				if r := recover(); r != nil {
-					ec.Error(ctx, ec.Recover(ctx, r))
-					ret = nil
-				}
-			}()
-			if !isLen1 {
-				defer wg.Done()
-			}
-			ret[i] = ec.marshalOBook2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐBook(ctx, sel, v[i])
-		}
-		if isLen1 {
-			f(i)
-		} else {
-			go f(i)
-		}
-
-	}
-	wg.Wait()
-
-	return ret
-}
-
-func (ec *executionContext) marshalOBook2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐBook(ctx context.Context, sel ast.SelectionSet, v *model.Book) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	return ec._Book(ctx, sel, v)
-}
-
 func (ec *executionContext) unmarshalOBoolean2bool(ctx context.Context, v interface{}) (bool, error) {
 	res, err := graphql.UnmarshalBoolean(v)
 	return res, graphql.ErrorOnPath(ctx, err)
@@ -6027,54 +5951,6 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	}
 	res := graphql.MarshalBoolean(*v)
 	return res
-}
-
-func (ec *executionContext) marshalOCategory2ᚕᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v []*model.Category) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	ret := make(graphql.Array, len(v))
-	var wg sync.WaitGroup
-	isLen1 := len(v) == 1
-	if !isLen1 {
-		wg.Add(len(v))
-	}
-	for i := range v {
-		i := i
-		fc := &graphql.FieldContext{
-			Index:  &i,
-			Result: &v[i],
-		}
-		ctx := graphql.WithFieldContext(ctx, fc)
-		f := func(i int) {
-			defer func() {
-				if r := recover(); r != nil {
-					ec.Error(ctx, ec.Recover(ctx, r))
-					ret = nil
-				}
-			}()
-			if !isLen1 {
-				defer wg.Done()
-			}
-			ret[i] = ec.marshalOCategory2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐCategory(ctx, sel, v[i])
-		}
-		if isLen1 {
-			f(i)
-		} else {
-			go f(i)
-		}
-
-	}
-	wg.Wait()
-
-	return ret
-}
-
-func (ec *executionContext) marshalOCategory2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v *model.Category) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	return ec._Category(ctx, sel, v)
 }
 
 func (ec *executionContext) unmarshalOID2ᚖstring(ctx context.Context, v interface{}) (*string, error) {
@@ -6109,18 +5985,11 @@ func (ec *executionContext) marshalOInt2ᚖint(ctx context.Context, sel ast.Sele
 	return res
 }
 
-func (ec *executionContext) marshalOOrder2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐOrder(ctx context.Context, sel ast.SelectionSet, v *model.Order) graphql.Marshaler {
+func (ec *executionContext) marshalOResponse2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐResponse(ctx context.Context, sel ast.SelectionSet, v *model.Response) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
-	return ec._Order(ctx, sel, v)
-}
-
-func (ec *executionContext) marshalOOrderItem2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐOrderItem(ctx context.Context, sel ast.SelectionSet, v *model.OrderItem) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	return ec._OrderItem(ctx, sel, v)
+	return ec._Response(ctx, sel, v)
 }
 
 func (ec *executionContext) unmarshalOString2ᚖstring(ctx context.Context, v interface{}) (*string, error) {
@@ -6137,13 +6006,6 @@ func (ec *executionContext) marshalOString2ᚖstring(ctx context.Context, sel as
 	}
 	res := graphql.MarshalString(*v)
 	return res
-}
-
-func (ec *executionContext) marshalOUser2ᚖgithubᚗcomᚋrulanugrhᚋgraphqlᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	return ec._User(ctx, sel, v)
 }
 
 func (ec *executionContext) marshalO__EnumValue2ᚕgithubᚗcomᚋ99designsᚋgqlgenᚋgraphqlᚋintrospectionᚐEnumValueᚄ(ctx context.Context, sel ast.SelectionSet, v []introspection.EnumValue) graphql.Marshaler {
