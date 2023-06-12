@@ -703,16 +703,8 @@ video {
   margin-bottom: 2.5rem;
 }
 
-.mb-16{
-  margin-bottom: 4rem;
-}
-
 .mb-2{
   margin-bottom: 0.5rem;
-}
-
-.mb-4{
-  margin-bottom: 1rem;
 }
 
 .mb-5{
@@ -729,6 +721,18 @@ video {
 
 .mb-8{
   margin-bottom: 2rem;
+}
+
+.ml-12{
+  margin-left: 3rem;
+}
+
+.ml-\[110px\]{
+  margin-left: 110px;
+}
+
+.ml-\[115px\]{
+  margin-left: 115px;
 }
 
 .mr-3{
@@ -757,6 +761,38 @@ video {
 
 .mt-8{
   margin-top: 2rem;
+}
+
+.ml-\[120px\]{
+  margin-left: 120px;
+}
+
+.ml-\[130px\]{
+  margin-left: 130px;
+}
+
+.ml-\[113px\]{
+  margin-left: 113px;
+}
+
+.ml-14{
+  margin-left: 3.5rem;
+}
+
+.ml-\[108px\]{
+  margin-left: 108px;
+}
+
+.ml-\[100px\]{
+  margin-left: 100px;
+}
+
+.ml-\[125px\]{
+  margin-left: 125px;
+}
+
+.ml-\[105px\]{
+  margin-left: 105px;
 }
 
 .box-border{
@@ -858,12 +894,12 @@ video {
   display: none;
 }
 
-.h-32{
-  height: 8rem;
-}
-
 .h-9{
   height: 2.25rem;
+}
+
+.h-\[150px\]{
+  height: 150px;
 }
 
 .w-10\/12{
@@ -874,8 +910,16 @@ video {
   width: 2.25rem;
 }
 
+.w-\[200px\]{
+  width: 200px;
+}
+
 .w-full{
   width: 100%;
+}
+
+.w-\[150px\]{
+  width: 150px;
 }
 
 .max-w-\[250px\]{
@@ -884,10 +928,6 @@ video {
 
 .max-w-full{
   max-width: 100%;
-}
-
-.max-w-xl{
-  max-width: 36rem;
 }
 
 .flex-shrink{
@@ -1256,6 +1296,10 @@ video {
 
 .grid-flow-col-dense{
   grid-auto-flow: column dense;
+}
+
+.grid-cols-1{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -2162,9 +2206,12 @@ video {
   font-family: 'Fira Code', monospace;;
 }
 
-.text-3xl{
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.text-\[20px\]{
+  font-size: 20px;
+}
+
+.text-\[25px\]{
+  font-size: 25px;
 }
 
 .text-base{
@@ -2817,11 +2864,6 @@ body {
 }
 
 @media (min-width: 640px){
-  .sm\:text-4xl{
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
   .sm\:underline{
     text-decoration-line: underline;
   }
@@ -2851,6 +2893,10 @@ body {
 
   .lg\:mt-5{
     margin-top: 1.25rem;
+  }
+
+  .lg\:ml-\[100\]{
+    margin-left: 100;
   }
 
   .lg\:block{
@@ -2887,6 +2933,14 @@ body {
 
   .lg\:max-w-full{
     max-width: 100%;
+  }
+
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:gap-10{
+    gap: 2.5rem;
   }
 
   .lg\:rounded-none{
@@ -2937,5 +2991,11 @@ body {
     .dark\:lg\:hover\:\[paint-order\:markers\]:hover{
       paint-order: markers;
     }
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
